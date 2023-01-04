@@ -13,6 +13,8 @@ export class Index {
 
     constructor() {
         this.array = new Array();
+        this.array2 = new Array();
+        this.array3 = new Array();
         this.linkedList = new LinkedList();
         this.queue = new Queue();
         this.stack = new Stack();
@@ -22,6 +24,14 @@ export class Index {
         for (let i = 0; i < 10; i++) {
             this.array.push(i);
         }
+
+        for (let i = 0; i < 10; i++) {
+            this.array2.push(i);
+        }
+
+        for (let i = 0; i < 10; i++) {
+            this.array3.push(i);
+        }
     }
 
     printArray() {
@@ -29,6 +39,14 @@ export class Index {
         console.log('[Array Values]');
         for (let i = 0; i < this.array.length(); i++) {
             console.log(this.array.get(i));
+        }
+    }
+
+    printArray2() {
+        console.log('[Array2 Length]: ', this.array2.length());
+        console.log('[Array2 Values]');
+        for (let i = 0; i < this.array2.length(); i++) {
+            console.log(this.array2.get(i));
         }
     }
 
@@ -54,6 +72,18 @@ export class Index {
     sortArray() {
         return this.array.sort();
     }
+
+    toStringArray() {
+        return this.array.toString();
+    }
+
+    joinArray() {
+        return this.array.join(' - * - ');
+    }
+
+    concatArrays() {
+        return this.array.concat(this.array2, this.array3);
+    }
 }
 
 const index = new Index();
@@ -71,3 +101,7 @@ console.log(index.shiftArray());
 console.log(index.array.length());
 console.log(index.unshiftArray(1000));
 console.log(index.array.length());
+console.log(index.joinArray());
+console.log(index.concatArrays());
+index.printArray();
+index.printArray2();

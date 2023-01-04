@@ -81,4 +81,57 @@ export class Array {
         Sorting.prototype.quickSort(this.#data, 0, this.#length - 1);
         return this.#data;
     }
+
+    // [time complexity]: O(n)
+    toString() {
+        let arrayString = '';
+
+        for (let i = 0; i < this.#length; i++) {
+            arrayString += `${this.#data[i]}`;
+            if (i !== this.#length - 1) {
+                arrayString += ',';
+            }
+        }
+
+        return arrayString;
+    }
+
+    // [time complexity]: O(n)
+    join(item) {
+        let arrayString = '';
+
+        for (let i = 0; i < this.#length; i++) {
+            arrayString += `${this.#data[i]}`;
+            if (i !== this.#length - 1) {
+                arrayString += `${item}`;
+            }
+        }
+
+        return arrayString;
+    }
+
+    // [time complexity]: O(n + (a * b * ... * k))
+    concat(...args) {
+        // [warning]: The Javascript's concat() method does not change the existing arrays. It always returns a new array.
+        const newArray = new Array();
+
+        for (let i = 0; i < this.#length; i++) {
+            newArray.push(this.#data[i]);
+        }
+
+        let i = 0;
+
+        while (args[i]) {
+            if (typeof args[i] === 'string') {
+                newArray.push(args[i]);
+            } else {
+                for (let j = 0; j < args[i].length(); j++) {
+                    newArray.push(args[i].get(j));
+                }
+            }
+            i++;
+        }
+
+        return newArray.#data;
+    }
 }
