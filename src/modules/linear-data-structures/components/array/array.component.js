@@ -11,7 +11,7 @@ export class Array {
 
     // [time complexity]: O(1)
     get(index) {
-        return this.#data[index];
+        return index ? this.#data[index] : this.#data;
     }
 
     // [time complexity]: O(1)
@@ -133,5 +133,28 @@ export class Array {
         }
 
         return newArray.#data;
+    }
+
+    // [time complexity]: O(a * b)
+    splice(startIndex, quantityToDelete, ...items) {
+        const array = new Array();
+        const lastIndex = startIndex + quantityToDelete;
+
+        for (let i = 0; i < this.#length; i++) {
+            if (i === startIndex) {
+                let j = 0;
+
+                while (items[j]) {
+                    array.push(items[j]);
+                    j++;
+                }
+            }
+            
+            if (startIndex >= i || i > lastIndex) {
+                array.push(this.#data[i]);
+            }
+        }
+
+        return array.#data;
     }
 }

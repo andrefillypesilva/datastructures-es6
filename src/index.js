@@ -50,6 +50,10 @@ export class Index {
         }
     }
 
+    getArray() {
+        return this.array.get();
+    }
+
     updateArray() {
         for (let i = 0; i < 5; i++) {
             this.array.update(i, this.array.get(this.array.length() - (i + 1)));
@@ -84,6 +88,17 @@ export class Index {
     concatArrays() {
         return this.array.concat(this.array2, this.array3);
     }
+
+    spliceInArray() {
+        const newArray = new Array();
+        newArray.push(5);
+        newArray.push(7);
+        newArray.push(9);
+        newArray.push(12);
+        newArray.push(24);
+        console.log(newArray.get());
+        return newArray.splice(0, 0, 8);
+    }
 }
 
 const index = new Index();
@@ -105,3 +120,5 @@ console.log(index.joinArray());
 console.log(index.concatArrays());
 index.printArray();
 index.printArray2();
+console.log(index.getArray());
+console.log(index.spliceInArray());
