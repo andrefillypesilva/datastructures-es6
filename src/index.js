@@ -99,6 +99,10 @@ export class Index {
         console.log(newArray.get());
         return newArray.splice(0, 0, 8);
     }
+
+    sliceArray() {
+        return this.array.slice(2, 5);
+    }
 }
 
 const index = new Index();
@@ -122,3 +126,4 @@ index.printArray();
 index.printArray2();
 console.log(index.getArray());
 console.log(index.spliceInArray());
+console.log(index.sliceArray());

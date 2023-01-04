@@ -138,7 +138,7 @@ export class Array {
     // [time complexity]: O(a * b)
     splice(startIndex, quantityToDelete, ...items) {
         const array = new Array();
-        const lastIndex = startIndex + quantityToDelete;
+        const endIndex = startIndex + quantityToDelete;
 
         for (let i = 0; i < this.#length; i++) {
             if (i === startIndex) {
@@ -150,7 +150,21 @@ export class Array {
                 }
             }
             
-            if (startIndex >= i || i > lastIndex) {
+            if (startIndex >= i || i > endIndex) {
+                array.push(this.#data[i]);
+            }
+        }
+
+        return array.#data;
+    }
+
+    // [time complexity]: O(n)
+    slice(startIndex, endIndex) {
+        const array = new Array();
+        const computedEndIndex = endIndex ?? this.#length;
+
+        for (let i = startIndex; i < this.#length; i++) {
+            if (i < computedEndIndex) {
                 array.push(this.#data[i]);
             }
         }
