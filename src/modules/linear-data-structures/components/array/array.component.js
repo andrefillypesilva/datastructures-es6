@@ -11,7 +11,7 @@ export class Array {
 
     // [time complexity]: O(1)
     get(index) {
-        return index ? this.#data[index] : this.#data;
+        return index >= 0 ? this.#data[index] : this.#data;
     }
 
     // [time complexity]: O(1)
