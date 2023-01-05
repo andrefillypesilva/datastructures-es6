@@ -1,3 +1,4 @@
+import { Bootstrap } from './utils/bootstrap.utils';
 import { Array, LinkedList, Queue, Stack } from './modules/linear-data-structures/linear-data-structures.module';
 
 export class Index {
@@ -107,23 +108,5 @@ export class Index {
 
 const index = new Index();
 index.setApplicationName('[Data Structures Playground]');
-index.fillArray();
-index.printArray();
-index.updateArray();
-index.printArray();
-console.log('Find 10: ', index.findInArray(10));
-console.log('Find 5: ', index.findInArray(5));
-console.log('Sorted array: ', index.sortArray());
-console.log(index.shiftArray());
-console.log(index.array.length());
-console.log(index.shiftArray());
-console.log(index.array.length());
-console.log(index.unshiftArray(1000));
-console.log(index.array.length());
-console.log(index.joinArray());
-console.log(index.concatArrays());
-index.printArray();
-index.printArray2();
-console.log(index.getArray());
-console.log(index.spliceInArray());
-console.log(index.sliceArray());
+
+Bootstrap.prototype.createScreen();
