@@ -1,0 +1,27 @@
+:root {
+  --background-color: #222225;
+  --font-color: #e8e9ed;
+  --invert-font-color: #222225;
+  --secondary-color: #a3abba;
+  --tertiary-color: #a3abba;
+  --primary-color: #4AF626;
+  --error-color: #ff3c74;
+  
+  --spacing-3xs: .5rem;
+  --spacing-xxs: 1rem;
+  --spacing-xs: 2rem;
+  --spacing-s: 3rem;
+  --spacing-m: 5rem;
+  --spacing-l: 8rem;
+  --spacing-xl: 10rem;
+  --spacing-xxl: 12rem;
+  --spacing-3xl: 16rem;
+}
+
+input {
+  &::placeholder {
+    font-size: .7rem;
+  }
+}
+
+@import './modules/linear-data-structures/components/array/array.component.scss';

@@ -14,10 +14,14 @@ module.exports = {
                 exclude: /node_modules/,
                 use: ['babel-loader'],
             },
+            {
+                test: /\.(scss|css)$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
         ],
     },
     resolve: {
-        extensions: ['*', '.js'],
+        extensions: ['*', '.js', '.css', '.scss'],
     },
     output: {
         path: path.resolve(__dirname, './dist'),

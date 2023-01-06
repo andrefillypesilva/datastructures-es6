@@ -69,7 +69,7 @@ export class Array {
     // [time complexity]: O(n)
     find(item) {
         for (let i = 0; i < this.#length; i++) {
-            if (this.#data[i] === item) {
+            if (this.#data[i].toString() === item.toString()) {
                 return i;
             }
         }

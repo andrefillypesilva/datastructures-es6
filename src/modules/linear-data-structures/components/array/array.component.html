@@ -1,1 +1,37 @@
-<h1>ARRAY</h1>
+<section class="array">
+    <h3 class="array__title">Array</h3>
+    <p class="array__description">Choose an action</p>
+
+    <div class="array__terminal-prompt">
+        <div class="array__terminal-prompt--old-commands"></div>
+        <div class="terminal-prompt">
+            <a href="#" class="terminal-prompt__current-line no-style"></a>
+        </div>
+    </div>
+
+    <div class="array__cta">
+        <button id="showArrayButton" class="btn btn-default">See array</button>
+        <button id="lengthArrayButton" class="btn btn-default">See array length</button>
+    </div>
+
+    <div class="array__cta">
+        <input type="number" id="arrayInput" placeholder="type an index/value to get/find/push/shift in the array">
+        <div class="btn-group">
+            <button id="getArrayButton" class="btn btn-primary btn-ghost">Get</button>
+            <button id="pushArrayButton" class="btn btn-primary btn-ghost">Push</button>
+            <button id="findArrayButton" class="btn btn-primary btn-ghost">Find</button>
+            <button id="unshiftArrayButton" class="btn btn-primary btn-ghost">Unshift</button>
+        </div>
+    </div>
+
+    <div class="array__cta">
+        <input type="number" id="updateArrayInput" placeholder="type the value...">
+        <input type="number" id="updateArrayIndexInput" placeholder="type the index...">
+        <button id="updateArrayButton" class="btn btn-primary btn-ghost">Update an array element</button>
+    </div>
+    
+    <div class="array__cta">
+        <button id="shiftArrayButton" class="btn btn-error">Shift element from array</button>
+        <button id="popArrayButton" class="btn btn-error">Pop element from array</button>
+    </div>
+</section>

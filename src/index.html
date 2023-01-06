@@ -5,8 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><%= htmlWebpackPlugin.options.title %></title>
+        <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
     </head>
-    <body>
+    <body class="terminal container">
         <script>
             const components = `<%= htmlWebpackPlugin.options.components.toString() %>`.split(',');
             for (component of components) {
