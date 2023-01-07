@@ -1,4 +1,4 @@
-# Data Structure Playground
+# Data Structures Playground
 Implementation of the most common data structures in Javascript
 
 ## Instalation
@@ -25,7 +25,7 @@ An initial data structure (array, by now) will be generated when the application
 - Shift: removes the first element in the current array and shows the new one.
 - Pop: removes the last element in the current array and shows the new one.
 
-![Application Example](https://github.com/andrefillypesilva/data-structures-playground/blob/master/application_example.jpg?raw=true)
+![Application Example](https://github.com/andrefillypesilva/data-structures-playground/blob/main/application_example.jpg?raw=true)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
