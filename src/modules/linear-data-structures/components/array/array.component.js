@@ -138,10 +138,10 @@ export class Array {
     // [time complexity]: O(a * b)
     splice(startIndex, quantityToDelete, ...items) {
         const array = new Array();
-        const endIndex = startIndex + quantityToDelete;
+        const endIndex = +startIndex + +quantityToDelete;
 
         for (let i = 0; i < this.#length; i++) {
-            if (i === startIndex) {
+            if (i === +startIndex) {
                 let j = 0;
 
                 while (items[j]) {
@@ -150,7 +150,7 @@ export class Array {
                 }
             }
             
-            if (startIndex >= i || i > endIndex) {
+            if (+startIndex >= i || i > endIndex) {
                 array.push(this.#data[i]);
             }
         }

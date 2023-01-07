@@ -27,6 +27,12 @@ export class Bootstrap {
             this.promptMessage('See array', element.join(' - '));
         });
 
+        const sortArrayButton = document.getElementById('sortArrayButton');
+        sortArrayButton.addEventListener('click', () => {
+            element.sort();
+            this.promptMessage('Sort array', element.join(' - '));
+        });
+
         const pushArrayButton = document.getElementById('pushArrayButton');
         pushArrayButton.addEventListener('click', () => {
             element.push(arrayInputEl.value);
@@ -57,13 +63,31 @@ export class Bootstrap {
         });
 
         const updateArrayButton = document.getElementById('updateArrayButton');
-        const updateArrayInput = document.getElementById('updateArrayInput');
-        const updateArrayIndexInput = document.getElementById('updateArrayIndexInput');
-
         updateArrayButton.addEventListener('click', () => {
+            const updateArrayInput = document.getElementById('updateArrayInput');
+            const updateArrayIndexInput = document.getElementById('updateArrayIndexInput');
             element.update(updateArrayIndexInput.value, updateArrayInput.value);
 
             this.promptMessage('Update an array element', element.join(' - '));
+        });
+
+        const sliceArrayButton = document.getElementById('sliceArrayButton');
+        sliceArrayButton.addEventListener('click', () => {
+            const sliceStartArrayInput = document.getElementById('sliceStartArrayInput');
+            const sliceEndArrayInput = document.getElementById('sliceEndArrayInput');
+            const newElement = element.slice(sliceStartArrayInput.value, sliceEndArrayInput.value);
+
+            this.promptMessage('Slice', JSON.stringify(newElement));
+        });
+
+        const spliceArrayButton = document.getElementById('spliceArrayButton');
+        spliceArrayButton.addEventListener('click', () => {
+            const spliceStartArrayInput = document.getElementById('spliceStartArrayInput');
+            const spliceQuantityArrayInput = document.getElementById('spliceQuantityArrayInput');
+            const spliceArrayInput = document.getElementById('spliceArrayInput');
+            const newElement = element.splice(spliceStartArrayInput.value, spliceQuantityArrayInput.value, spliceArrayInput.value);
+
+            this.promptMessage('Splice', JSON.stringify(newElement));
         });
 
         const popArrayButton = document.getElementById('popArrayButton');
