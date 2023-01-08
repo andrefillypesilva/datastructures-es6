@@ -24,4 +24,15 @@ input {
   }
 }
 
+.data-structures-playground {
+  &__header {
+    padding: var(--spacing-xs) 0 0 0;
+  }
+
+  &__footer {
+    padding: var(--spacing-s) 0;
+    text-align: center;
+  }
+}
+
 @import './modules/linear-data-structures/components/array/array.component.scss';

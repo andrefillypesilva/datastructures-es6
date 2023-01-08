@@ -4,8 +4,8 @@ export class Bootstrap {
     constructor() { }
 
     createScreen() {
-        const body = document.querySelector('body');
-        const children = [...body.children];
+        const main = document.getElementsByClassName('data-structures-playground__main')[0];
+        const children = [...main.children];
         const components = children.map(child => {
             return child.id;
         }).filter(component => component);
