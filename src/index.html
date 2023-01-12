@@ -19,23 +19,46 @@
             const components = `<%= htmlWebpackPlugin.options.components.toString() %>`.split(',');
 
             let i = 0;
-
+            const terminalMenu = document.getElementsByClassName('terminal-menu')[0];
+            const menu = document.createElement('ul');
+            
             for (component of components) {
                 const componentEl = document.createElement('section');
                 componentEl.setAttribute('id', component);
+                if (i > 0) componentEl.setAttribute('class', 'data-structures-playground__main--hidden');
                 document.getElementsByClassName('data-structures-playground__main')[0].appendChild(componentEl);
 
-                const terminalMenu = document.getElementsByClassName('terminal-menu')[0];
-                const menu = document.createElement('ul');
                 const menuListItem = document.createElement('li');
                 const menuItem = document.createElement('a');
 
                 menuItem.setAttribute('class', 'menu-item');
+                menuItem.setAttribute('data-component', component);
                 menuItem.setAttribute('href', '#');
                 if (i === 0) {
                     menuItem.setAttribute('class', 'menu-item active');
                     i++;
                 }
+                menuItem.addEventListener('click', () => {
+                    const menuListItems = [...menu.children];
+
+                    menuListItems.forEach((li) => {
+                        li.childNodes[0].classList.remove('active');
+                    });
+
+                    menuItem.classList.add('active');
+
+                    for (comp of components) {
+                        const currentCompoennt = document.getElementById(comp);
+
+                        if (currentCompoennt) {
+                            if (comp === menuItem.dataset.component) {
+                                currentCompoennt.className = '';
+                            } else {
+                                currentCompoennt.className = 'data-structures-playground__main--hidden';
+                            }
+                        }
+                    }
+                });
                 menuItem.textContent = `${component.charAt(0).toUpperCase()}${component.slice(1)}`;
 
                 menuListItem.appendChild(menuItem);
