@@ -36,6 +36,35 @@ export class Index {
             this.array3.push(i);
         }
     }
+
+    createLinkedList() {
+        console.log(this.linkedList.get());
+        this.linkedList.append(5);
+        console.log('append 5: ');
+        console.log(this.linkedList.get());
+        this.linkedList.append(7);
+        console.log('append 7:');
+        console.log(this.linkedList.get());
+        this.linkedList.append(1);
+        console.log('append 1:');
+        console.log(this.linkedList.get());
+        this.linkedList.prepend(12);
+        console.log('prepend 12:');
+        console.log(this.linkedList.get());
+        this.linkedList.insert(5, 888);
+        console.log('insert 5, 888:');
+        console.log(this.linkedList.get());
+        this.linkedList.insert(2, 999);
+        console.log('insert 2, 999:');
+        console.log(this.linkedList.get());
+        console.log('lookup 888:');
+        console.log(this.linkedList.lookup(888));
+        console.log('lookup 34:');
+        console.log(this.linkedList.lookup(34));
+        console.log('delete 0:');
+        console.log(this.linkedList.delete(0));
+        console.log(this.linkedList.get());
+    }
 }
 
 const index = new Index();
@@ -48,3 +77,4 @@ setTimeout(() => {
     Bootstrap.prototype.createDOMEvents(index.array);
 }, 1000);
 
+index.createLinkedList();
