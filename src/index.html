@@ -59,7 +59,14 @@
                         }
                     }
                 });
-                menuItem.textContent = `${component.charAt(0).toUpperCase()}${component.slice(1)}`;
+
+                const componentName = component.replace(/\-/g, ' ').split(' ');
+
+                for (let i = 0; i < componentName.length; i++) {
+                    componentName[i] = `${componentName[i].charAt(0).toUpperCase()}${componentName[i].slice(1)}`;
+                }
+
+                menuItem.textContent = `${componentName.join(' ')}`;
 
                 menuListItem.appendChild(menuItem);
                 menu.appendChild(menuListItem);

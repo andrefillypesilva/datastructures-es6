@@ -5,6 +5,15 @@
         align-items: center;
         gap: var(--spacing-m) var(--spacing-xs);
         margin-top: var(--spacing-m);
+        min-height: var(--spacing-3xl);
+
+        &--no-flex {
+            display: block;
+
+            .terminal-prompt {
+                margin-top: var(--spacing-xs);
+            }
+        }
     }
 
     &__item {
@@ -16,7 +25,6 @@
         font-size: 5rem;
 
         &--end {
-            align-self: end;
             position: relative;
 
             span {

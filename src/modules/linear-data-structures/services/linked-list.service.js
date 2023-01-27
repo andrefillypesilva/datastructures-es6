@@ -51,54 +51,88 @@ export class LinkedListService {
     renderLinkedList() {
         const container = document.getElementsByClassName('linked-list__container')[0];
         container.innerHTML = '';
+        container.classList.remove('linked-list__container--no-flex');
         
         let current = this.linkedList.head;
-        while (current) {
-            const item = document.createElement('div');
-            item.className = 'linked-list__item';
 
-            if (current === this.linkedList.head || current === this.linkedList.tail) {
-                const title = document.createElement('span');
-                title.className = 'linked-list__item-title';
-                title.innerHTML = current === this.linkedList.head ? 'HEAD NODE' : 'TAIL NODE';
-                item.append(title);
+        if (current) {
+            while (current) {
+                const item = document.createElement('div');
+                item.className = 'linked-list__item';
+    
+                if (current === this.linkedList.head || current === this.linkedList.tail) {
+                    const title = document.createElement('span');
+                    title.className = 'linked-list__item-title';
+                    title.innerHTML = current === this.linkedList.head ? 'HEAD NODE' : 'TAIL NODE';
+                    item.append(title);
+                }
+    
+                const head = document.createElement('div');
+                head.className = 'linked-list__head';
+                head.innerHTML = current.value;
+    
+                const body = document.createElement('div');
+                body.className = 'linked-list__body';
+    
+                const bullet = document.createElement('div');
+                bullet.className = 'linked-list__bullet';
+    
+                const core = document.createElement('div');
+                core.className = 'linked-list__bullet--core';
+    
+                bullet.append(core);
+                body.append(bullet);
+                item.append(head);
+                item.append(body);
+    
+                container.append(item);
+    
+                const arrow = document.createElement('div');
+                if (current !== this.linkedList.tail) {
+                    arrow.className = 'linked-list__arrow';
+                    arrow.innerHTML = '&#10138;';
+                } else {
+                    arrow.className = 'linked-list__arrow linked-list__arrow--end';
+                    arrow.innerHTML = '&#10137;';
+    
+                    const nullSpan = document.createElement('span');
+                    nullSpan.innerHTML = 'NULL';
+                    arrow.append(nullSpan);
+                }
+                container.append(arrow);
+    
+                current = current.next;
             }
+        } else {
+            container.classList.add('linked-list__container--no-flex');
 
-            const head = document.createElement('div');
-            head.className = 'linked-list__head';
-            head.innerHTML = current.value;
+            const promptEl = document.createElement('div');
+            promptEl.className = 'terminal-prompt';
 
-            const body = document.createElement('div');
-            body.className = 'linked-list__body';
+            const anchorEl = document.createElement('a');
+            anchorEl.setAttribute('href', '#');
 
-            const bullet = document.createElement('div');
-            bullet.className = 'linked-list__bullet';
+            const emptyMessage = document.createElement('span');
+            emptyMessage.innerHTML = 'Empty LinkedList';
+            
+            anchorEl.append(emptyMessage);
+            promptEl.append(anchorEl);
+            container.append(promptEl);
 
-            const core = document.createElement('div');
-            core.className = 'linked-list__bullet--core';
+            setTimeout(() => {
+                container.innerHTML = '';
+                anchorEl.innerHTML = '';
 
-            bullet.append(core);
-            body.append(bullet);
-            item.append(head);
-            item.append(body);
+                const oldEmptyMessage = document.createElement('span');
+                oldEmptyMessage.innerHTML = `> ${emptyMessage.textContent}`;
 
-            container.append(item);
+                emptyMessage.innerHTML = 'Add new values to see the LinkedList again...';
 
-            const arrow = document.createElement('div');
-            if (current !== this.linkedList.tail) {
-                arrow.className = 'linked-list__arrow';
-                arrow.innerHTML = '&#10138;';
-            } else {
-                arrow.className = 'linked-list__arrow linked-list__arrow--end';
-                arrow.innerHTML = '&#10137;';
-
-                const nullSpan = document.createElement('span');
-                nullSpan.innerHTML = 'NULL';
-                arrow.append(nullSpan);
-            }
-            container.append(arrow);
-
-            current = current.next;
+                container.append(oldEmptyMessage);
+                anchorEl.append(emptyMessage);
+                promptEl.append(anchorEl);
+                container.append(promptEl);
+            }, 3000);
         }
     }
 }
