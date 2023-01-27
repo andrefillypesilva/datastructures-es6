@@ -53,7 +53,7 @@ export class LinkedList {
             this.head = node;
             this.tail = node;
             return this.head;
-        } else if (position === 0) {
+        } else if (+position === 0) {
             const oldHead = this.head;
             node.next = oldHead;
             this.head = node;
@@ -89,7 +89,7 @@ export class LinkedList {
     // [time complexity]: O(n)
     delete(position) {
         if (this.head) {
-            if (position === 0) {
+            if (+position === 0) {
                 let oldHead = this.head;
                 this.head = this.head.next;
 
@@ -106,6 +106,7 @@ export class LinkedList {
                     if (i === position - 1) {
                         let next = currentNode.next;
                         currentNode.next = currentNode.next.next;
+                        if (next === this.tail) this.tail = currentNode;
                         next = null;
                         return currentNode;
                     }
