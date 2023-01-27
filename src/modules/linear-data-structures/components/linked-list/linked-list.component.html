@@ -1,46 +1,16 @@
 <section class="linked-list">
-    <section class="linked-list__container">
-        <div class="linked-list__item">
-            <span class="linked-list__title">HEAD NODE</span>
-            <div class="linked-list__head">
-                8
-            </div>
-            <div class="linked-list__body">
-                <div class="linked-list__bullet">
-                    <div class="linked-list__bullet--core"></div>
-                </div>
-            </div>
-        </div>
-        <div class="linked-list__arrow">
-            &#10138;
-        </div>
-        <div class="linked-list__item">
-            <div class="linked-list__head">
-                34
-            </div>
-            <div class="linked-list__body">
-                <div class="linked-list__bullet">
-                    <div class="linked-list__bullet--core"></div>
-                </div>
-            </div>
-        </div>
-        <div class="linked-list__arrow">
-            &#10138;
-        </div>
-        <div class="linked-list__item">
-            <span class="linked-list__title">TAIL NODE</span>
-            <div class="linked-list__head">
-                1
-            </div>
-            <div class="linked-list__body">
-                <div class="linked-list__bullet">
-                    <div class="linked-list__bullet--core"></div>
-                </div>
-            </div>
-        </div>
-        <div class="linked-list__arrow linked-list__arrow--end">
-            &#10137;
-            <span>NULL</span>
-        </div>
+    <section class="linked-list__header">
+        <h3 class="linked-list__title">Linked List</h3>
+        <p class="linked-list__description">Choose an action</p>
     </section>
+    <section class="linked-list__container"></section>
+    
+    <div class="linked-list__cta">
+        <input type="number" id="linkedListIndexInput" placeholder="Index">
+        <input type="number" id="linkedListValueInput" placeholder="Value">
+        <button id="prependLinkedListButton" class="btn btn-default">Prepend</button>
+        <button id="appendLinkedListButton" class="btn btn-default">Append</button>
+        <button id="insertLinkedListButton" class="btn btn-default">Insert</button>
+        <button id="deleteLinkedListButton" class="btn btn-error">Delete</button>
+    </div>
 </section>

@@ -16,8 +16,6 @@ export class Index {
 
     constructor() {
         this.array = new Array();
-        this.array2 = new Array();
-        this.array3 = new Array();
         this.linkedList = new LinkedList();
         this.queue = new Queue();
         this.stack = new Stack();
@@ -27,43 +25,12 @@ export class Index {
         for (let i = 0; i < 10; i++) {
             this.array.push(Math.floor(Math.random() * i * 100));
         }
-
-        for (let i = 0; i < 10; i++) {
-            this.array2.push(i);
-        }
-
-        for (let i = 0; i < 10; i++) {
-            this.array3.push(i);
-        }
     }
 
     createLinkedList() {
-        console.log(this.linkedList.get());
-        this.linkedList.append(5);
-        console.log('append 5: ');
-        console.log(this.linkedList.get());
-        this.linkedList.append(7);
-        console.log('append 7:');
-        console.log(this.linkedList.get());
-        this.linkedList.append(1);
-        console.log('append 1:');
-        console.log(this.linkedList.get());
-        this.linkedList.prepend(12);
-        console.log('prepend 12:');
-        console.log(this.linkedList.get());
-        this.linkedList.insert(5, 888);
-        console.log('insert 5, 888:');
-        console.log(this.linkedList.get());
-        this.linkedList.insert(2, 999);
-        console.log('insert 2, 999:');
-        console.log(this.linkedList.get());
-        console.log('lookup 888:');
-        console.log(this.linkedList.lookup(888));
-        console.log('lookup 34:');
-        console.log(this.linkedList.lookup(34));
-        console.log('delete 0:');
-        console.log(this.linkedList.delete(0));
-        console.log(this.linkedList.get());
+        for (let i = 0; i < 8; i++) {
+            this.linkedList.append(Math.floor(Math.random() * i * 100));
+        }
     }
 }
 
@@ -72,9 +39,9 @@ index.setApplicationName('[Data Structures Playground]');
 
 Bootstrap.prototype.createScreen();
 index.fillArray();
+index.createLinkedList();
 
 setTimeout(() => {
-    Bootstrap.prototype.createDOMEvents(index.array);
+    Bootstrap.prototype.createDOMEvents(index);
 }, 1000);
 
-index.createLinkedList();

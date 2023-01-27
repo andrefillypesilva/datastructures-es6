@@ -1,4 +1,5 @@
 import { ArrayService } from "../modules/linear-data-structures/services/array.services";
+import { LinkedListService } from "../modules/linear-data-structures/services/linked-list.service";
 
 export class Bootstrap {
     constructor() { }
@@ -17,7 +18,8 @@ export class Bootstrap {
         }
     }
 
-    createDOMEvents(element) {
-        ArrayService.prototype.createArrayEvents(element);
+    createDOMEvents(elements) {
+        ArrayService.prototype.createArrayEvents(elements.array);
+        LinkedListService.prototype.createLinkedListEvents(elements.linkedList);
     }
 }

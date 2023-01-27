@@ -1,8 +1,10 @@
 .linked-list {
     &__container {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        gap: var(--spacing-xs);
+        gap: var(--spacing-m) var(--spacing-xs);
+        margin-top: var(--spacing-m);
     }
 
     &__item {
@@ -34,7 +36,7 @@
         font-size: 2rem;
     }
 
-    &__title {
+    &__item-title {
         position: absolute;
         top: -2rem;
         left: -4px;
@@ -42,6 +44,7 @@
         background: var(--primary-color);
         color: black;
         padding: .1rem;
+        text-align: center;
     }
 
     &__body {
@@ -69,5 +72,13 @@
             margin: .1rem;
             background: var(--primary-color);
         }
+    }
+
+    &__cta {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        padding: var(--spacing-xxs) 0;
+        margin-top: var(--spacing-m);
     }
 }
