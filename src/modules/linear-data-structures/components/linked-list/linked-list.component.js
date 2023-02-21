@@ -34,7 +34,7 @@ export class LinkedList {
             let currentNode = this.head;
 
             while (currentNode.next) {
-                if (currentNode.value === value) {
+                if (currentNode.value === +value) {
                     return currentNode;
                 }
 

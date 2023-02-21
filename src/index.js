@@ -32,6 +32,18 @@ export class Index {
             this.linkedList.append(Math.floor(Math.random() * i * 100));
         }
     }
+
+    createQueue() {
+        for (let i = 0; i < 3; i++) {
+            this.queue.enqueue(Math.floor(Math.random() * i * 100));
+        }
+    }
+
+    createStack() {
+        for (let i = 0; i < 3; i++) {
+            this.stack.push(Math.floor(Math.random() * i * 100));
+        }
+    }
 }
 
 const index = new Index();
@@ -40,6 +52,8 @@ index.setApplicationName('[Data Structures Playground]');
 Bootstrap.prototype.createScreen();
 index.fillArray();
 index.createLinkedList();
+index.createQueue();
+index.createStack();
 
 setTimeout(() => {
     Bootstrap.prototype.createDOMEvents(index);

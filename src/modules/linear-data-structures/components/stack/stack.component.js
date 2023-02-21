@@ -6,8 +6,8 @@ export class Stack extends LinkedList {
     }
 
     // [time complexity]: O(n)
-    lookup(value) {
-        this.lookup(value);
+    lookupStack(value) {
+        return this.lookup(value);
     }
 
     // [time complexity]: O(1)
