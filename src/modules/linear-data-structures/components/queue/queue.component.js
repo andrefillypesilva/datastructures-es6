@@ -6,8 +6,8 @@ export class Queue extends LinkedList {
     }
 
     // [time complexity]: O(n)
-    lookup(value) {
-        this.lookup(value);
+    lookupQueue(value) {
+        return this.lookup(value);
     }
 
     // [time complexity]: O(1)

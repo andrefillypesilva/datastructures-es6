@@ -33,8 +33,8 @@ export class LinkedList {
         if (this.head) {
             let currentNode = this.head;
 
-            while (currentNode.next) {
-                if (currentNode.value === +value) {
+            while (currentNode) {
+                if (currentNode.value === value || currentNode.value === +value) {
                     return currentNode;
                 }
 

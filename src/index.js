@@ -34,8 +34,20 @@ export class Index {
     }
 
     createQueue() {
+        const people = [
+            'drunk-man',
+            'glorious-man',
+            'running-boy',
+            'running-woman',
+            'waiting-man',
+            'waiting-man-2',
+            'waiting-woman',
+            'waiting-woman-2'
+        ];
+
+
         for (let i = 0; i < 3; i++) {
-            this.queue.enqueue(Math.floor(Math.random() * i * 100));
+            this.queue.enqueue(people[Math.floor(Math.random() * 8)]);
         }
     }
 
@@ -57,5 +69,5 @@ index.createStack();
 
 setTimeout(() => {
     Bootstrap.prototype.createDOMEvents(index);
-}, 1000);
+}, 3000);
 

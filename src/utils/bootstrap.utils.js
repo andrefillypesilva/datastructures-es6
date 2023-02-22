@@ -23,7 +23,7 @@ export class Bootstrap {
     createDOMEvents(elements) {
         ArrayService.prototype.createArrayEvents(elements.array);
         LinkedListService.prototype.createLinkedListEvents(elements.linkedList);
-        // QueueService.prototype.createQueueEvents(elements.queue);
+        QueueService.prototype.createQueueEvents(elements.queue);
         StackService.prototype.createStackEvents(elements.stack);
     }
 }

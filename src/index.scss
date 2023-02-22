@@ -5,6 +5,7 @@
   --secondary-color: #a3abba;
   --tertiary-color: #a3abba;
   --primary-color: #4AF626;
+  --primary-color-rgb: 74, 246, 38;
   --error-color: #ff3c74;
   
   --spacing-3xs: .5rem;
@@ -21,6 +22,22 @@
 input {
   &::placeholder {
     font-size: .7rem;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+
+  .radio {
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 1rem;
+    padding: var(--spacing-3xs) var(--spacing-xxs) var(--spacing-3xs) var(--spacing-3xs);
+    margin: calc(var(--spacing-3xs) / 2);
+
+    &:has(input[type=radio]:checked) {
+      background-color: rgba(var(--primary-color-rgb), .5);
+    }
   }
 }
 
