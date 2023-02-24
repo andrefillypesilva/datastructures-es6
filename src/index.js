@@ -1,5 +1,7 @@
 import { Bootstrap } from './utils/bootstrap.utils';
+
 import { Array, LinkedList, Queue, Stack } from './modules/linear-data-structures/linear-data-structures.module';
+import { BinaryTree } from './modules/non-linear-data-structures/components/binary-tree/binary-tree.component';
 
 import './index.scss';
 
@@ -19,6 +21,7 @@ export class Index {
         this.linkedList = new LinkedList();
         this.queue = new Queue();
         this.stack = new Stack();
+        this.binaryTree = new BinaryTree();
     }
 
     fillArray() {
@@ -56,6 +59,12 @@ export class Index {
             this.stack.push(Math.floor(Math.random() * i * 100));
         }
     }
+
+    createBinaryTree() {
+        for (let i = 0; i < 10; i++) {
+            this.binaryTree.insert(Math.floor(Math.random() * 100));
+        }
+    }
 }
 
 const index = new Index();
@@ -66,6 +75,7 @@ index.fillArray();
 index.createLinkedList();
 index.createQueue();
 index.createStack();
+index.createBinaryTree();
 
 setTimeout(() => {
     Bootstrap.prototype.createDOMEvents(index);
