@@ -21,7 +21,7 @@ export class BinaryTree {
     }
 
     // [time complexity]: O(log n)
-    insert(value) {
+    insert(value, isFillingBinaryTree = false) {
         console.log(value);
         const node = new BinaryTreeNode(value);
 
@@ -31,16 +31,29 @@ export class BinaryTree {
             let current = this.root;
 
             while (current) {
-                if (current.key > node.key) {
+                if (+current.key > +node.key) {
                     if (current.left) {
-                        if (current.left.key > node.key) {
+                        if (+current.left.key > +node.key) {
                             current = current.left;
                         } else {
-                            // node.left = current.left;
-                            // current.left = node;
-                            // current = current.left;
-                            // break;
-                            current = current.right;
+                            if (isFillingBinaryTree) {
+                                current = current.left;
+
+                                if (current) {
+                                    if (current.right) {
+                                        current = current.right;
+                                    } else {
+                                        current.right = node;
+                                        current = current.right;
+                                        break;
+                                    }
+                                }
+                            } else {
+                                node.left = current.left;
+                                current.left = node;
+                                current = current.left;
+                                break;
+                            }
                         }
                     } else {
                         current.left = node;
@@ -49,14 +62,27 @@ export class BinaryTree {
                     }
                 } else {
                     if (current.right) {
-                        if (node.key > current.right.key) {
+                        if (+node.key > current.right.key) {
                             current = current.right;
                         } else {
-                            // node.right = current.right;
-                            // current.right = node;
-                            // current = current.right;
-                            // break;
-                            current = current.left;
+                            if (isFillingBinaryTree) {
+                                current = current.right;
+
+                                if (current) {
+                                    if (current.left) {
+                                        current = current.left;
+                                    } else {
+                                        current.left = node;
+                                        current = current.left;
+                                        break;
+                                    }
+                                }
+                            } else {
+                                node.right = current.right;
+                                current.right = node;
+                                current = current.right;
+                                break;
+                            }
                         }
                     } else {
                         current.right = node;
