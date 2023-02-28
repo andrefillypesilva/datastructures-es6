@@ -8,9 +8,9 @@ export class BinaryTree {
         let current = this.root;
 
         while (current) {
-            if (current.key === value) {
+            if (+current.key === +value) {
                 return current;
-            } else if (current.key > value) {
+            } else if (+current.key > +value) {
                 current = current.left;
             } else {
                 current = current.right;
@@ -22,7 +22,6 @@ export class BinaryTree {
 
     // [time complexity]: O(log n)
     insert(value) {
-        console.log(value);
         const node = new BinaryTreeNode(value);
 
         if (!this.root) {
@@ -70,13 +69,69 @@ export class BinaryTree {
                 }
             }
         }
-
-        console.log(this.root);
     }
 
     // [time complexity]: O(log n)
-    delete() {
+    delete(value) {
+        let current = this.root;
+        let foundElement = null;
+        let leftElement = null;
+        let rightElement = null;
+        let smallestGreaterThanLeft = null;
+        let lastCurrent = null;
+        let direction = null;
+        let beforeFoundElement = null;
+        let foundElementDirection = null;
 
+        while (current) {
+            if (!foundElement) {
+                if (+current.key === +value) {
+                    foundElement = current;
+                    leftElement = foundElement.left;
+                    rightElement = foundElement.right;
+                    current = current.right;
+                    beforeFoundElement = lastCurrent;
+                    foundElementDirection = direction;
+                } else if (+current.key > +value) {
+                    lastCurrent = current;
+                    current = current.left;
+                    direction = 'left';
+                } else {
+                    lastCurrent = current;
+                    current = current.right;
+                    direction = 'right';
+                }
+            } else {
+                if (current === rightElement) {
+                    if (current.left) {
+                        smallestGreaterThanLeft = current.left;
+                    } else {
+                        smallestGreaterThanLeft = current;
+                        break;
+                    }
+                    direction = 'left';
+                    lastCurrent = current;
+                    current = current.left;
+                } else {
+                    if (current.right) {
+                        smallestGreaterThanLeft = current.right;
+                    } else {
+                        smallestGreaterThanLeft = current;
+                        break;
+                    }
+                    direction = 'right';
+                    lastCurrent = current;
+                    current = current.right;
+                }
+            }
+        }
+
+        smallestGreaterThanLeft.left = leftElement;
+        smallestGreaterThanLeft.right = rightElement;
+        beforeFoundElement[foundElementDirection] = smallestGreaterThanLeft;
+        lastCurrent[direction] = null;
+        foundElement = null;
+        console.log(this.root);
     }
 }
 
