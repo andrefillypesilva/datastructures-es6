@@ -61,16 +61,15 @@ export class Index {
     }
 
     createBinaryTree() {
-        const tree = ['44', '54', '10', '7', '62', '52', '49', '15', '30', '83'];
-        // const tree = ['83', '45', '39', '76', '68', '74', '80', '94'];
-        for (let i = 0; i < 10; i++) {
-            // this.binaryTree.insert(Math.floor(Math.random() * 100), true);
-            this.binaryTree.insert(tree[i]);
+        let leafToDelete = null;
+        
+        for (let i = 0; i < 8; i++) {
+            const leafValue = Math.floor(Math.random() * 100);
+            this.binaryTree.insert(leafValue);
+            if (i === 4) leafToDelete = leafValue;
         }
 
-        // console.log(this.binaryTree.lookup(10));
-
-        this.binaryTree.delete(10);
+        this.binaryTree.delete(leafToDelete);
     }
 }
 

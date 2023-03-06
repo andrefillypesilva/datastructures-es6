@@ -75,9 +75,11 @@ export class BinaryTree {
     delete(value) {
         let current = this.root;
         let foundElement = null;
+        let foundElementIsLeaf = false;
         let leftElement = null;
         let rightElement = null;
         let smallestGreaterThanLeft = null;
+        let smallestGreaterThanLeftIsLeaf = false;
         let lastCurrent = null;
         let direction = null;
         let beforeFoundElement = null;
@@ -89,9 +91,15 @@ export class BinaryTree {
                     foundElement = current;
                     leftElement = foundElement.left;
                     rightElement = foundElement.right;
-                    current = current.right;
+                    if (current.right) {
+                        current = current.right;
+                    } else {
+                        current = current.left;
+                    }
                     beforeFoundElement = lastCurrent;
                     foundElementDirection = direction;
+
+                    if (!foundElement.right && !foundElement.left) foundElementIsLeaf = true;
                 } else if (+current.key > +value) {
                     lastCurrent = current;
                     current = current.left;
@@ -107,31 +115,64 @@ export class BinaryTree {
                         smallestGreaterThanLeft = current.left;
                     } else {
                         smallestGreaterThanLeft = current;
+                        if (!current.right) smallestGreaterThanLeftIsLeaf = true;
                         break;
                     }
-                    direction = 'left';
                     lastCurrent = current;
+                    direction = 'left';
                     current = current.left;
                 } else {
                     if (current.right) {
                         smallestGreaterThanLeft = current.right;
                     } else {
                         smallestGreaterThanLeft = current;
+                        if (!current.left) smallestGreaterThanLeftIsLeaf = true;
                         break;
                     }
-                    direction = 'right';
                     lastCurrent = current;
+                    direction = 'right';
                     current = current.right;
                 }
             }
         }
 
-        smallestGreaterThanLeft.left = leftElement;
-        smallestGreaterThanLeft.right = rightElement;
-        beforeFoundElement[foundElementDirection] = smallestGreaterThanLeft;
-        lastCurrent[direction] = null;
-        foundElement = null;
-        console.log(this.root);
+        if (foundElement) {
+            if (
+                (
+                    smallestGreaterThanLeftIsLeaf &&
+                    beforeFoundElement &&
+                    beforeFoundElement[foundElementDirection] &&
+                    lastCurrent &&
+                    lastCurrent[direction] &&
+                    +beforeFoundElement[foundElementDirection].key !== +lastCurrent[direction].key
+                ) ||
+                (+lastCurrent.key === +beforeFoundElement.key)
+            ) lastCurrent[direction] = null;
+
+            if (
+                smallestGreaterThanLeft &&
+                smallestGreaterThanLeft[direction] &&
+                +smallestGreaterThanLeft[direction].key === +smallestGreaterThanLeft.key
+            ) smallestGreaterThanLeft[direction] = null;
+
+            foundElement = null;
+
+            if (!foundElementIsLeaf) {
+                if (
+                    smallestGreaterThanLeft &&
+                    leftElement &&
+                    +smallestGreaterThanLeft.key !== +leftElement.key
+                ) smallestGreaterThanLeft.left = leftElement;
+                
+                if (
+                    smallestGreaterThanLeft &&
+                    rightElement &&
+                    +smallestGreaterThanLeft.key !== +rightElement.key
+                ) smallestGreaterThanLeft.right = rightElement;
+
+                beforeFoundElement[foundElementDirection] = smallestGreaterThanLeft;
+            }
+        }
     }
 }
 
