@@ -91,15 +91,10 @@ export class BinaryTree {
                     foundElement = current;
                     leftElement = foundElement.left;
                     rightElement = foundElement.right;
-                    if (current.right) {
-                        current = current.right;
-                    } else {
-                        current = current.left;
-                    }
+                    current = current.right ?? current.left;
                     beforeFoundElement = lastCurrent;
                     foundElementDirection = direction;
-
-                    if (!foundElement.right && !foundElement.left) foundElementIsLeaf = true;
+                    foundElementIsLeaf = !foundElement.right && !foundElement.left;
                 } else if (+current.key > +value) {
                     lastCurrent = current;
                     current = current.left;
@@ -111,24 +106,22 @@ export class BinaryTree {
                 }
             } else {
                 if (current === rightElement) {
-                    if (current.left) {
-                        smallestGreaterThanLeft = current.left;
-                    } else {
+                    if (!current.left) {
                         smallestGreaterThanLeft = current;
-                        if (!current.right) smallestGreaterThanLeftIsLeaf = true;
+                        smallestGreaterThanLeftIsLeaf = !!(!current.right);
                         break;
                     }
+                    smallestGreaterThanLeft = current.left;
                     lastCurrent = current;
                     direction = 'left';
                     current = current.left;
                 } else {
-                    if (current.right) {
-                        smallestGreaterThanLeft = current.right;
-                    } else {
+                    if (!current.right) {
                         smallestGreaterThanLeft = current;
-                        if (!current.left) smallestGreaterThanLeftIsLeaf = true;
+                        smallestGreaterThanLeftIsLeaf = !!(!current.left);
                         break;
                     }
+                    smallestGreaterThanLeft = current.right;
                     lastCurrent = current;
                     direction = 'right';
                     current = current.right;
@@ -146,7 +139,11 @@ export class BinaryTree {
                     lastCurrent[direction] &&
                     +beforeFoundElement[foundElementDirection].key !== +lastCurrent[direction].key
                 ) ||
-                (+lastCurrent.key === +beforeFoundElement.key)
+                (
+                    lastCurrent &&
+                    beforeFoundElement &&
+                    +lastCurrent.key === +beforeFoundElement.key
+                )
             ) lastCurrent[direction] = null;
 
             if (
