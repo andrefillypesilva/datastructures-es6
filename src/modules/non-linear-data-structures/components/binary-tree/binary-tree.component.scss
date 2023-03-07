@@ -1,5 +1,8 @@
 .binary-tree {
     &__container {
+        display: flex;
+        justify-content: center;
+
         ul {
             li {
                 &::before {
@@ -16,6 +19,10 @@
                     &::before, &::after {
                         border-color: var(--secondary-color);
                     }
+                }
+
+                &.binary-tree__empty-node {
+                    color: var(--tertiary-color);
                 }
             }
         }
