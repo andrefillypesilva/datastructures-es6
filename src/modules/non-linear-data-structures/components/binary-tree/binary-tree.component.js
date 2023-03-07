@@ -1,6 +1,17 @@
 export class BinaryTree {
     constructor () {
         this.root = null;
+        this.current = null;
+        this.foundElement = null;
+        this.foundElementIsLeaf = false;
+        this.leftElement = null;
+        this.rightElement = null;
+        this.smallestGreaterThanLeft = null;
+        this.smallestGreaterThanLeftIsLeaf = false;
+        this.lastCurrent = null;
+        this.direction = null;
+        this.beforeFoundElement = null;
+        this.foundElementDirection = null;
     }
 
     // [time complexity]: O(log n)
@@ -73,103 +84,146 @@ export class BinaryTree {
 
     // [time complexity]: O(log n)
     delete(value) {
-        let current = this.root;
-        let foundElement = null;
-        let foundElementIsLeaf = false;
-        let leftElement = null;
-        let rightElement = null;
-        let smallestGreaterThanLeft = null;
-        let smallestGreaterThanLeftIsLeaf = false;
-        let lastCurrent = null;
-        let direction = null;
-        let beforeFoundElement = null;
-        let foundElementDirection = null;
+        this.clearVariables();
+        this.current = this.root;
 
-        while (current) {
-            if (!foundElement) {
-                if (+current.key === +value) {
-                    foundElement = current;
-                    leftElement = foundElement.left;
-                    rightElement = foundElement.right;
-                    current = current.right ?? current.left;
-                    beforeFoundElement = lastCurrent;
-                    foundElementDirection = direction;
-                    foundElementIsLeaf = !foundElement.right && !foundElement.left;
-                } else if (+current.key > +value) {
-                    lastCurrent = current;
-                    current = current.left;
-                    direction = 'left';
+        this.searchForElementToDelete(value);
+
+        if (this.foundElement) {
+            this.reorganizeBinaryTreeAfterFindElementToDelete();
+        }
+    }
+
+    clearVariables() {
+        this.current = null;
+        this.foundElement = null;
+        this.foundElementIsLeaf = false;
+        this.leftElement = null;
+        this.rightElement = null;
+        this.smallestGreaterThanLeft = null;
+        this.smallestGreaterThanLeftIsLeaf = false;
+        this.lastCurrent = null;
+        this.direction = null;
+        this.beforeFoundElement = null;
+        this.foundElementDirection = null;
+    }
+
+    searchForElementToDelete(value) {
+        while (this.current) {
+            if (!this.foundElement) {
+                if (+this.current.key === +value) {
+                    this.setFoundElement();
+                } else if (+this.current.key > +value) {
+                    this.goForward('left');
                 } else {
-                    lastCurrent = current;
-                    current = current.right;
-                    direction = 'right';
+                    this.goForward('right');
                 }
             } else {
-                if (current === rightElement) {
-                    if (!current.left) {
-                        smallestGreaterThanLeft = current;
-                        smallestGreaterThanLeftIsLeaf = !!(!current.right);
+                if (this.current === this.rightElement) {
+                    if (!this.current.left) {
+                        this.smallestGreaterThanLeft = this.current;
+                        this.smallestGreaterThanLeftIsLeaf = !!(!this.current.right);
                         break;
                     }
-                    smallestGreaterThanLeft = current.left;
-                    lastCurrent = current;
-                    direction = 'left';
-                    current = current.left;
+                    this.searchForTheSmallestGreaterThanLeft('left');
                 } else {
-                    if (!current.right) {
-                        smallestGreaterThanLeft = current;
-                        smallestGreaterThanLeftIsLeaf = !!(!current.left);
+                    if (!this.current.right) {
+                        this.smallestGreaterThanLeft = this.current;
+                        this.smallestGreaterThanLeftIsLeaf = !!(!this.current.left);
                         break;
                     }
-                    smallestGreaterThanLeft = current.right;
-                    lastCurrent = current;
-                    direction = 'right';
-                    current = current.right;
+                    this.searchForTheSmallestGreaterThanLeft('right');
                 }
             }
         }
+    }
 
-        if (foundElement) {
-            if (
-                (
-                    smallestGreaterThanLeftIsLeaf &&
-                    beforeFoundElement &&
-                    beforeFoundElement[foundElementDirection] &&
-                    lastCurrent &&
-                    lastCurrent[direction] &&
-                    +beforeFoundElement[foundElementDirection].key !== +lastCurrent[direction].key
-                ) ||
-                (
-                    lastCurrent &&
-                    beforeFoundElement &&
-                    +lastCurrent.key === +beforeFoundElement.key
-                )
-            ) lastCurrent[direction] = null;
+    reorganizeBinaryTreeAfterFindElementToDelete() {
+        if (
+            this.beforeFoundElementChildIsDifferentThanLastCurrentChild() ||
+            this.beforeFoundElementIsEqualToLastCurrent()
+        ) this.lastCurrent[this.direction] = null;
 
-            if (
-                smallestGreaterThanLeft &&
-                smallestGreaterThanLeft[direction] &&
-                +smallestGreaterThanLeft[direction].key === +smallestGreaterThanLeft.key
-            ) smallestGreaterThanLeft[direction] = null;
+        if (this.smallestGreaterThanLeftIsDifferentOfItsChild())
+            this.smallestGreaterThanLeft[this.direction] = null;
 
-            foundElement = null;
+        this.foundElement = null;
 
-            if (!foundElementIsLeaf) {
-                if (
-                    smallestGreaterThanLeft &&
-                    leftElement &&
-                    +smallestGreaterThanLeft.key !== +leftElement.key
-                ) smallestGreaterThanLeft.left = leftElement;
-                
-                if (
-                    smallestGreaterThanLeft &&
-                    rightElement &&
-                    +smallestGreaterThanLeft.key !== +rightElement.key
-                ) smallestGreaterThanLeft.right = rightElement;
+        if (!this.foundElementIsLeaf) {
+            if (this.smallestGreaterThanLeftIsDifferentThanLeftElement())
+                this.smallestGreaterThanLeft.left = this.leftElement;
+            
+            if (this.smallestGreaterThanLeftIsDifferentThanRightElement())
+                this.smallestGreaterThanLeft.right = this.rightElement;
 
-                beforeFoundElement[foundElementDirection] = smallestGreaterThanLeft;
-            }
+            this.beforeFoundElement[this.foundElementDirection] = this.smallestGreaterThanLeft;
         }
+    }
+
+    setFoundElement() {
+        this.foundElement = this.current;
+        this.leftElement = this.foundElement.left;
+        this.rightElement = this.foundElement.right;
+        this.current = this.current.right ?? this.current.left;
+        this.beforeFoundElement = this.lastCurrent;
+        this.foundElementDirection = this.direction;
+        this.foundElementIsLeaf = !this.foundElement.right && !this.foundElement.left;
+    }
+
+    goForward(direction) {
+        this.lastCurrent = this.current;
+        this.current = this.current[direction];
+        this.direction = direction;
+    }
+
+    searchForTheSmallestGreaterThanLeft(direction) {
+        this.smallestGreaterThanLeft = this.current[direction];
+        this.lastCurrent = this.current;
+        this.direction = direction;
+        this.current = this.current[direction];
+    }
+
+    beforeFoundElementChildIsDifferentThanLastCurrentChild() {
+        return (
+            this.smallestGreaterThanLeftIsLeaf &&
+            this.beforeFoundElement &&
+            this.beforeFoundElement[this.foundElementDirection] &&
+            this.lastCurrent &&
+            this.lastCurrent[this.direction] &&
+            +this.beforeFoundElement[this.foundElementDirection].key !== +this.lastCurrent[this.direction].key
+        );
+    }
+
+    beforeFoundElementIsEqualToLastCurrent() {
+        return (
+            this.beforeFoundElement &&
+            this.lastCurrent &&
+            +this.beforeFoundElement.key === +this.lastCurrent.key
+        );
+    }
+
+    smallestGreaterThanLeftIsDifferentOfItsChild() {
+        return (
+            this.smallestGreaterThanLeft &&
+            this.smallestGreaterThanLeft[this.direction] &&
+            +this.smallestGreaterThanLeft[this.direction].key === +this.smallestGreaterThanLeft.key
+        );
+    }
+
+    smallestGreaterThanLeftIsDifferentThanLeftElement() {
+        return (
+            this.smallestGreaterThanLeft &&
+            this.leftElement &&
+            +this.smallestGreaterThanLeft.key !== +this.leftElement.key
+        );
+    }
+
+    smallestGreaterThanLeftIsDifferentThanRightElement() {
+        return (
+            this.smallestGreaterThanLeft &&
+            this.rightElement &&
+            +this.smallestGreaterThanLeft.key !== +this.rightElement.key
+        );
     }
 }
 
