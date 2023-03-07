@@ -1,0 +1,23 @@
+.binary-tree {
+    &__container {
+        ul {
+            li {
+                &::before {
+                    border-color: var(--secondary-color);
+                }
+
+                &::after {
+                    content: '';
+                }
+
+                .tf-nc {
+                    border-color: var(--secondary-color);
+
+                    &::before, &::after {
+                        border-color: var(--secondary-color);
+                    }
+                }
+            }
+        }
+    }
+}
