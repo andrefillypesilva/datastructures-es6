@@ -61,17 +61,10 @@ export class Index {
     }
 
     createBinaryTree() {
-        // let leafToDelete = null;
-        
         for (let i = 0; i < 8; i++) {
             const leafValue = Math.floor(Math.random() * 100);
             this.binaryTree.insert(leafValue);
-            // if (i === 4) leafToDelete = leafValue;
-
-            console.log('leafValue: ', leafValue);
         }
-
-        // this.binaryTree.delete(leafToDelete);
     }
 }
 
