@@ -27,4 +27,18 @@
             }
         }
     }
+
+    &__actions {
+        display: flex;
+
+        input {
+            flex-grow: 1;
+            width: auto;
+            margin-right: var(--spacing-xs);
+        }
+
+        button {
+            flex-grow: 3;
+        }
+    }
 }

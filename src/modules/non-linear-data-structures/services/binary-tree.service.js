@@ -1,12 +1,19 @@
+import { DOMManipulator } from "../../../utils/domManipulator.utils";
+
 export class BinaryTreeService {
     constructor() {
         this.binaryTree;
+        this.binaryTreeInputEl;
     }
 
     createBinaryTreeEvents(_binaryTree) {
         this.binaryTree = _binaryTree;
+        this.binaryTreeInputEl = document.getElementById('inputBinaryTree');
 
         this.renderBinaryTree();
+        this.createInsertInBinaryTreeEvent();
+        this.createDeleteFromBinaryTreeEvent();
+        this.createLookupInBinaryTreeEvent();
     }
 
     renderBinaryTree() {
@@ -91,5 +98,31 @@ export class BinaryTreeService {
         }
 
         return;
+    }
+
+    createInsertInBinaryTreeEvent() {
+        DOMManipulator.prototype.getDOMElement('insertBinaryTreeButton', () => {
+            this.binaryTree.insert(this.binaryTreeInputEl.value);
+            this.renderBinaryTree();
+        });
+    }
+
+    createDeleteFromBinaryTreeEvent() {
+        DOMManipulator.prototype.getDOMElement('deleteBinaryTreeButton', () => {
+            this.binaryTree.delete(this.binaryTreeInputEl.value);
+            this.renderBinaryTree();
+        });
+    }
+
+    createLookupInBinaryTreeEvent() {
+        DOMManipulator.prototype.getDOMElement('lookupBinaryTreeButton', () => {
+            const value = this.binaryTree.lookup(this.binaryTreeInputEl.value);
+            
+            if (value) {
+                alert(`This item (${this.binaryTreeInputEl.value}) was found on the BinaryTree!`);
+            } else {
+                alert(`This item (${this.binaryTreeInputEl.value}) was NOT found on the BinaryTree!`);
+            }
+        });
     }
 }
