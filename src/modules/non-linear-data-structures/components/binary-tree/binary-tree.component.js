@@ -94,6 +94,30 @@ export class BinaryTree {
         }
     }
 
+    // [time complexity]: O(n)
+    breadthFirstSearch() {
+        let currentNode = this.root;
+        const list = [];
+        const queue = [];
+
+        queue.push(currentNode);
+
+        while (queue.length > 0) {
+            currentNode = queue.shift();
+            list.push(currentNode.key);
+
+            if (currentNode.left) {
+                queue.push(currentNode.left);
+            }
+
+            if (currentNode.right) {
+                queue.push(currentNode.right);
+            }
+        }
+
+        alert(list);
+    }
+
     clearVariables() {
         this.current = null;
         this.foundElement = null;

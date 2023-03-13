@@ -14,6 +14,8 @@ export class BinaryTreeService {
         this.createInsertInBinaryTreeEvent();
         this.createDeleteFromBinaryTreeEvent();
         this.createLookupInBinaryTreeEvent();
+        this.createBreadthFirstSearchEvent();
+        this.createDepthFirstSearchEvent();
     }
 
     renderBinaryTree() {
@@ -123,6 +125,18 @@ export class BinaryTreeService {
             } else {
                 alert(`This item (${this.binaryTreeInputEl.value}) was NOT found on the BinaryTree!`);
             }
+        });
+    }
+
+    createBreadthFirstSearchEvent() {
+        DOMManipulator.prototype.getDOMElement('bfsBinaryTreeButton', () => {
+            this.binaryTree.breadthFirstSearch();
+        });
+    }
+
+    createDepthFirstSearchEvent() {
+        DOMManipulator.prototype.getDOMElement('dfsBinaryTreeButton', () => {
+            // this.binaryTree.depthFirstSearch();
         });
     }
 }
