@@ -115,7 +115,7 @@ export class BinaryTree {
             }
         }
 
-        alert(list);
+        return list;
     }
 
     clearVariables() {
