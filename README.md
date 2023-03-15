@@ -25,7 +25,7 @@ import { BinaryTree } from 'data-structures-playground/src/modules/non-linear-da
 ```
 
 2. Creating and using `data structures` (examples).
-#### Array [see code](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/array/array.component.js)
+#### Array [(code implementation)](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/array/array.component.js)
 ```javascript
 const array = new Array();
 array.push(10);
@@ -36,7 +36,7 @@ array.sort();
 
 console.log(array.toString());
 ```
-#### Linked List [see code](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/linked-list/linked-list.component.js)
+#### Linked List [(code implementation)](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/linked-list/linked-list.component.js)
 ```javascript
 const linkedList = new LinkedList();
 linkedList.prepend(444);
@@ -47,7 +47,7 @@ linkedList.delete(0);
 console.log(linkedList.get());
 ```
 
-#### Queue [see code](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/queue/queue.component.js)
+#### Queue [(code implementation)](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/queue/queue.component.js)
 ```javascript
 const queue = new Queue();
 queue.enqueue(1);
@@ -66,7 +66,7 @@ while (currentQueueItem) {
 }
 ```
 
-#### Stack [see code](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/stack/stack.component.js)
+#### Stack [(code implementation)](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/stack/stack.component.js)
 ```javascript
 const stack = new Stack();
 stack.push(1);
@@ -85,7 +85,7 @@ while (currentStackItem) {
 }
 ```
 
-#### Binary Tree [see code](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/non-linear-data-structures/components/binary-tree/binary-tree.component.js)
+#### Binary Tree [(code implementation)](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/non-linear-data-structures/components/binary-tree/binary-tree.component.js)
 ```javascript
 const binaryTree = new BinaryTree();
 binaryTree.insert(5);
