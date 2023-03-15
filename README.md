@@ -1,7 +1,7 @@
 # Data Structures Playground
 Implementation of the most common data structures in Javascript (ES6+), including linear and non-linear ones, such as `Array`, `Linked List`, `Queue`, `Stack` and `Binary Tree`.
 
-Futhermore, you will find here implementation of some interesting algorithms like `QuickSort` for sorting arrays and `Breadth First Search` for binary trees.
+Futhermore, you will find here implementation of some interesting algorithms like `Quick Sort` for sorting arrays and `Breadth First Search` for binary trees.
 
 ## Instalation
 ### If you want to use this lib into your personal project
@@ -21,11 +21,11 @@ import {
     Stack,
 } from 'data-structures-playground/src/modules/linear-data-structures/linear-data-structures.module.js';
 
-import { BinaryTree } from 'data-structures-playground/src/modules/non-linear-data-structures/components/binary-tree/binary-tree.component.js';
+import { BinaryTree } from 'data-structures-playground/src/modules/non-linear-data-structures/non-linear-data-structures.module.js';
 ```
 
 2. Creating and using `data structures` (examples).
-#### Array
+#### Array [see code](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/array/array.component.js)
 ```javascript
 const array = new Array();
 array.push(10);
@@ -36,7 +36,7 @@ array.sort();
 
 console.log(array.toString());
 ```
-#### Linked List
+#### Linked List [see code](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/linked-list/linked-list.component.js)
 ```javascript
 const linkedList = new LinkedList();
 linkedList.prepend(444);
@@ -47,7 +47,7 @@ linkedList.delete(0);
 console.log(linkedList.get());
 ```
 
-#### Queue
+#### Queue [see code](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/queue/queue.component.js)
 ```javascript
 const queue = new Queue();
 queue.enqueue(1);
@@ -66,7 +66,7 @@ while (currentQueueItem) {
 }
 ```
 
-#### Stack
+#### Stack [see code](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/stack/stack.component.js)
 ```javascript
 const stack = new Stack();
 stack.push(1);
@@ -83,6 +83,20 @@ while (currentStackItem) {
     console.log(currentStackItem.value);
     currentStackItem = currentStackItem.next;
 }
+```
+
+#### Binary Tree [see code](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/non-linear-data-structures/components/binary-tree/binary-tree.component.js)
+```javascript
+const binaryTree = new BinaryTree();
+binaryTree.insert(5);
+binaryTree.insert(9);
+binaryTree.insert(6);
+binaryTree.insert(2);
+binaryTree.insert(4);
+binaryTree.insert(3);
+binaryTree.insert(8);
+
+console.log(binaryTree.breadthFirstSearch());
 ```
 ## How to play this application if you want to clone to your computer
 To run this application you will need only run `npm run serve`.
@@ -127,6 +141,12 @@ An initial data structure will be generated when the application starts off. The
 - **pop()**: removes the element in the top of the stack.
 - **lookup(value: any)**: finds the provided element in the stack.
 - **peek()**: return the element in the top of the stack.
+
+**BINARY TREE**
+- **insert(value: any)**: inserts the provided value in the correct position on the current binary tree.
+- **delete()**: removes the provided value from the binary tree.
+- **lookup(value: any)**: finds the provided element on the current binary tree.
+- **breadthFirstSearch()**: return current binary tree after parse through the `Breadth First Search` algorithm.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
