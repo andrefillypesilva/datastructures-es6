@@ -1,6 +1,6 @@
 {
   "name": "data-structures-playground",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Implementation of the most common data structures in Javascript",
   "main": "index.js",
   "type": "module",
@@ -18,6 +18,18 @@
     "type": "git",
     "url": "git+https://github.com/andrefillypesilva/data-structures-playground.git"
   },
+  "keywords": [
+    "Data Structures",
+    "DSA",
+    "Javascript",
+    "Array",
+    "Stack",
+    "Queue",
+    "Linked List",
+    "Binary Tree",
+    "Quick Sort",
+    "Breadth First Search"
+  ],
   "author": "André Fillype Silva",
   "license": "ISC",
   "bugs": {
