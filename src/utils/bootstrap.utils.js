@@ -1,8 +1,8 @@
-import { ArrayService } from "../modules/linear-data-structures/services/array.services";
-import { LinkedListService } from "../modules/linear-data-structures/services/linked-list.service";
-import { QueueService } from "../modules/linear-data-structures/services/queue.services";
-import { StackService } from "../modules/linear-data-structures/services/stack.service";
-import { BinaryTreeService } from "../modules/non-linear-data-structures/services/binary-tree.service";
+import { ArrayService } from "../modules/linear-data-structures/services/array.service.js";
+import { LinkedListService } from "../modules/linear-data-structures/services/linked-list.service.js";
+import { QueueService } from "../modules/linear-data-structures/services/queue.service.js";
+import { StackService } from "../modules/linear-data-structures/services/stack.service.js";
+import { BinaryTreeService } from "../modules/non-linear-data-structures/services/binary-tree.service.js";
 
 export class Bootstrap {
     constructor() { }

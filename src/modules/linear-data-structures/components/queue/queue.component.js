@@ -1,4 +1,4 @@
-import { LinkedList } from '../linked-list/linked-list.component';
+import { LinkedList } from '../linked-list/linked-list.component.js';
 
 export class Queue extends LinkedList {
     constructor() {

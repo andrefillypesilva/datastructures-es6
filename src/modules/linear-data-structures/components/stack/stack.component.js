@@ -1,4 +1,4 @@
-import { LinkedList } from "../linked-list/linked-list.component";
+import { LinkedList } from "../linked-list/linked-list.component.js";
 
 export class Stack extends LinkedList {
     constructor() {

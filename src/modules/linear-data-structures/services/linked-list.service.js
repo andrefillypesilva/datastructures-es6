@@ -1,4 +1,4 @@
-import { DOMManipulator } from "../../../utils/domManipulator.utils";
+import { DOMManipulator } from "../../../utils/domManipulator.utils.js";
 
 export class LinkedListService {
     constructor () {

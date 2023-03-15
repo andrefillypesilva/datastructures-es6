@@ -1,4 +1,4 @@
-import { Sorting } from "../../../../utils/sorting.utils";
+import { Sorting } from "../../../../utils/sorting.utils.js";
 
 export class Array {
     #length;

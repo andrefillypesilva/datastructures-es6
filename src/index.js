@@ -1,7 +1,7 @@
-import { Bootstrap } from './utils/bootstrap.utils';
+import { Bootstrap } from './utils/bootstrap.utils.js';
 
-import { Array, LinkedList, Queue, Stack } from './modules/linear-data-structures/linear-data-structures.module';
-import { BinaryTree } from './modules/non-linear-data-structures/components/binary-tree/binary-tree.component';
+import { Array, LinkedList, Queue, Stack } from './modules/linear-data-structures/linear-data-structures.module.js';
+import { BinaryTree } from './modules/non-linear-data-structures/components/binary-tree/binary-tree.component.js';
 
 import './index.scss';
 

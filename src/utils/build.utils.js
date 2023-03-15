@@ -1,7 +1,7 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const fs = require('fs');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import fs from 'fs';
 
-class Build {
+export class Build {
     constructor () { }
 
     generateHtmlWebpackTemplateConfig() {
@@ -39,5 +39,3 @@ class Build {
         }
     }
 }
-
-module.exports = { Build };

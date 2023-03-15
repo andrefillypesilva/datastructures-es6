@@ -1,12 +1,16 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const { Build } = require('./src/utils/build.utils');
+import { Build } from './src/utils/build.utils.js';
 
 const { htmlWebpackTemplateConfig, components } = Build.prototype.generateHtmlWebpackTemplateConfig();
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default {
     entry: path.resolve(__dirname, './src/index.js'),
     module: {
         rules: [
