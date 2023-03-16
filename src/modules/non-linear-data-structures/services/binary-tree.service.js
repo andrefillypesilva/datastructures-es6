@@ -130,13 +130,13 @@ export class BinaryTreeService {
 
     createBreadthFirstSearchEvent() {
         DOMManipulator.prototype.getDOMElement('bfsBinaryTreeButton', () => {
-            this.binaryTree.breadthFirstSearch();
+            alert(this.binaryTree.breadthFirstSearch());
         });
     }
 
     createDepthFirstSearchEvent() {
         DOMManipulator.prototype.getDOMElement('dfsBinaryTreeButton', () => {
-            // this.binaryTree.depthFirstSearch();
+            alert(this.binaryTree.depthFirstSearchInOrder());
         });
     }
 }

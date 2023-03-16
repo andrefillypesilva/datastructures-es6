@@ -118,6 +118,26 @@ export class BinaryTree {
         return list;
     }
 
+    // [time complexity]: O(n)
+    depthFirstSearchInOrder() {
+        return this.traverseInOrder(this.root, []);
+    }
+
+    // [time complexity]: O(n)
+    traverseInOrder(node, list) {
+        if (node.left) {
+            this.traverseInOrder(node.left, list);
+        }
+
+        list.push(node.key);
+
+        if (node.right) {
+            this.traverseInOrder(node.right, list);
+        }
+
+        return list;
+    }
+
     clearVariables() {
         this.current = null;
         this.foundElement = null;
