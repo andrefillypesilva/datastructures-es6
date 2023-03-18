@@ -135,8 +135,16 @@ export class BinaryTreeService {
     }
 
     createDepthFirstSearchEvent() {
-        DOMManipulator.prototype.getDOMElement('dfsBinaryTreeButton', () => {
-            alert(this.binaryTree.depthFirstSearchInOrder());
+        DOMManipulator.prototype.getDOMElement('dfsInOrderBinaryTreeButton', () => {
+            alert(this.binaryTree.depthFirstSearch('inOrder'));
+        });
+
+        DOMManipulator.prototype.getDOMElement('dfsPreOrderBinaryTreeButton', () => {
+            alert(this.binaryTree.depthFirstSearch('preOrder'));
+        });
+
+        DOMManipulator.prototype.getDOMElement('dfsPostOrderBinaryTreeButton', () => {
+            alert(this.binaryTree.depthFirstSearch('postOrder'));
         });
     }
 }

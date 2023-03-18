@@ -119,8 +119,17 @@ export class BinaryTree {
     }
 
     // [time complexity]: O(n)
-    depthFirstSearchInOrder() {
-        return this.traverseInOrder(this.root, []);
+    depthFirstSearch(type) {
+        switch (type) {
+            case 'inOrder':
+                return this.traverseInOrder(this.root, []);
+            case 'preOrder':
+                return this.traversePreOrder(this.root, []);
+            case 'postOrder':
+                return this.traversePostOrder(this.root, []);
+            default:
+                return this.traverseInOrder(this.root, []);
+        }
     }
 
     // [time complexity]: O(n)
@@ -134,6 +143,36 @@ export class BinaryTree {
         if (node.right) {
             this.traverseInOrder(node.right, list);
         }
+
+        return list;
+    }
+
+    // [time complexity]: O(n)
+    traversePreOrder(node, list) {
+        list.push(node.key);
+
+        if (node.left) {
+            this.traversePreOrder(node.left, list);
+        }
+
+        if (node.right) {
+            this.traversePreOrder(node.right, list);
+        }
+
+        return list;
+    }
+
+    // [time complexity]: O(n)
+    traversePostOrder(node, list) {
+        if (node.left) {
+            this.traversePostOrder(node.left, list);
+        }
+
+        if (node.right) {
+            this.traversePostOrder(node.right, list);
+        }
+
+        list.push(node.key);
 
         return list;
     }
