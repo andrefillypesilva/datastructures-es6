@@ -1,7 +1,7 @@
 # Data Structures Playground
 Implementation of the most common data structures in Javascript (ES6+), including linear and non-linear ones, such as `Array`, `Linked List`, `Queue`, `Stack` and `Binary Tree`.
 
-Futhermore, you will find here implementation of some interesting algorithms like `Quick Sort` for sorting arrays and `Breadth First Search` for binary trees.
+Futhermore, you will find here implementation of some interesting algorithms like `Quick Sort` for sorting arrays and `Breadth First Search` or `Depth First Search (inOrder, preOrder, postOrder)` for binary trees.
 
 ## Instalation
 ### If you want to use this lib into your personal project
@@ -147,6 +147,7 @@ An initial data structure will be generated when the application starts off. The
 - **delete()**: removes the provided value from the binary tree.
 - **lookup(value: any)**: finds the provided element on the current binary tree.
 - **breadthFirstSearch()**: return current binary tree after parse through the `Breadth First Search` algorithm.
+- **depthFirstSearch(type: string)**: return current binary tree after parse through the `Depth First Search` algorithm using the approach provided by the type argument (it can be `inOrder`, `preOrder` or `postOrder`).
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

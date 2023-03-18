@@ -1,6 +1,6 @@
 {
   "name": "data-structures-playground",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Implementation of the most common data structures in Javascript",
   "main": "index.js",
   "type": "module",
@@ -28,7 +28,13 @@
     "Linked List",
     "Binary Tree",
     "Quick Sort",
-    "Breadth First Search"
+    "Breadth First Search",
+    "BFS",
+    "Depth First Search",
+    "DFS",
+    "Traverse In Order",
+    "Traverse Pre Order",
+    "Traverse Post Order"
   ],
   "author": "André Fillype Silva",
   "license": "ISC",
