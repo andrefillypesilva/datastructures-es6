@@ -1,31 +1,28 @@
-# Data Structures Playground
+# Data Structures ES6
 Implementation of the most common data structures in Javascript (ES6+), including linear and non-linear ones, such as `Array`, `Linked List`, `Queue`, `Stack` and `Binary Tree`.
 
 Futhermore, you will find here implementation of some interesting algorithms like `Quick Sort` for sorting arrays and `Breadth First Search` or `Depth First Search (inOrder, preOrder, postOrder)` for binary trees.
 
 ## Instalation
-### If you want to use this lib into your personal project
 ```bash
-npm i data-structures-playground
+npm i datastructures-es6
 ```
-### If you want to clone and run in your computer
-After clone this repository you will need to run `npm i` to install all dependencies.
 
 ## How to use this lib
-1. After install the package on your personal project, you may import the code in your files:
+### After install the package on your personal project, you may import the code in your files:
 ```javascript
 import {
     Array,
     LinkedList,
     Queue,
     Stack,
-} from 'data-structures-playground/src/modules/linear-data-structures/linear-data-structures.module.js';
+} from 'datastructures-es6/src/modules/linear-data-structures/linear-data-structures.module.js';
 
-import { BinaryTree } from 'data-structures-playground/src/modules/non-linear-data-structures/non-linear-data-structures.module.js';
+import { BinaryTree } from 'datastructures-es6/src/modules/non-linear-data-structures/non-linear-data-structures.module.js';
 ```
 
-2. Creating and using `data structures` (examples).
-#### Array [(code implementation)](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/array/array.component.js)
+### Creating and using `data structures` (examples).
+#### Array [(code implementation)](https://github.com/andrefillypesilva/datastructures-es6/blob/main/src/modules/linear-data-structures/components/array/array.component.js)
 ```javascript
 const array = new Array();
 array.push(10);
@@ -36,7 +33,7 @@ array.sort();
 
 console.log(array.toString());
 ```
-#### Linked List [(code implementation)](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/linked-list/linked-list.component.js)
+#### Linked List [(code implementation)](https://github.com/andrefillypesilva/datastructures-es6/blob/main/src/modules/linear-data-structures/components/linked-list/linked-list.component.js)
 ```javascript
 const linkedList = new LinkedList();
 linkedList.prepend(444);
@@ -47,7 +44,7 @@ linkedList.delete(0);
 console.log(linkedList.get());
 ```
 
-#### Queue [(code implementation)](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/queue/queue.component.js)
+#### Queue [(code implementation)](https://github.com/andrefillypesilva/datastructures-es6/blob/main/src/modules/linear-data-structures/components/queue/queue.component.js)
 ```javascript
 const queue = new Queue();
 queue.enqueue(1);
@@ -66,7 +63,7 @@ while (currentQueueItem) {
 }
 ```
 
-#### Stack [(code implementation)](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/linear-data-structures/components/stack/stack.component.js)
+#### Stack [(code implementation)](https://github.com/andrefillypesilva/datastructures-es6/blob/main/src/modules/linear-data-structures/components/stack/stack.component.js)
 ```javascript
 const stack = new Stack();
 stack.push(1);
@@ -85,7 +82,7 @@ while (currentStackItem) {
 }
 ```
 
-#### Binary Tree [(code implementation)](https://github.com/andrefillypesilva/data-structures-playground/blob/main/src/modules/non-linear-data-structures/components/binary-tree/binary-tree.component.js)
+#### Binary Tree [(code implementation)](https://github.com/andrefillypesilva/datastructures-es6/blob/main/src/modules/non-linear-data-structures/components/binary-tree/binary-tree.component.js)
 ```javascript
 const binaryTree = new BinaryTree();
 binaryTree.insert(5);
@@ -98,14 +95,8 @@ binaryTree.insert(8);
 
 console.log(binaryTree.breadthFirstSearch());
 ```
-## How to play this application if you want to clone to your computer
-To run this application you will need only run `npm run serve`.
 
-An initial data structure will be generated when the application starts off. Then you can manipulate this data structure inserting information in the inputs and choosing an action by the buttons.
-
-![Application Example](https://github.com/andrefillypesilva/data-structures-playground/blob/main/application_example.jpg?raw=true)
-
-### Available methods
+## Available methods
 **ARRAY**
 - **get(index?: number)**: returns the element value for a provided index or returns the entire array in case you do not provide an index.
 - **push(value: any)**: pushes the provided value in the current array.
