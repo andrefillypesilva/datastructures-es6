@@ -5,7 +5,7 @@ Futhermore, you will find here implementation of some interesting algorithms lik
 
 ## Instalation
 ```bash
-npm i datastructures-es6
+npm i @datastructures-es6/core
 ```
 
 ## How to use this lib
@@ -16,9 +16,8 @@ import {
     LinkedList,
     Queue,
     Stack,
-} from 'datastructures-es6/src/modules/linear-data-structures/linear-data-structures.module.js';
-
-import { BinaryTree } from 'datastructures-es6/src/modules/non-linear-data-structures/non-linear-data-structures.module.js';
+    BinaryTree
+} from '@datastructures-es6/core/src/index.js';
 ```
 
 ### Creating and using `data structures` (examples).

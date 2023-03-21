@@ -1,22 +1,15 @@
 {
-  "name": "datastructures-es6",
-  "version": "2.0.0",
+  "name": "@datastructures-es6/core",
+  "version": "2.0.1",
   "description": "Implementation of the most common data structures in Javascript",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "webpack --mode development",
-    "serve": "npm run build && webpack-dev-server --config ./webpack.config.js --mode development",
     "test": "npm run test"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrefillypesilva/data-structures-playground.git"
+    "url": "git+https://github.com/andrefillypesilva/datastructures-es6.git"
   },
   "keywords": [
     "Data Structures",
@@ -39,21 +32,7 @@
   "author": "André Fillype Silva",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/andrefillypesilva/data-structures-playground/issues"
+    "url": "https://github.com/andrefillypesilva/datastructures-es6/issues"
   },
-  "homepage": "https://github.com/andrefillypesilva/data-structures-playground#readme",
-  "devDependencies": {
-    "@babel/core": "^7.20.7",
-    "@babel/preset-env": "^7.20.2",
-    "babel-loader": "^9.1.0",
-    "copy-webpack-plugin": "^11.0.0",
-    "css-loader": "^6.7.3",
-    "html-webpack-plugin": "^5.5.0",
-    "node-sass": "^8.0.0",
-    "sass-loader": "^13.2.0",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
-  }
+  "homepage": "https://github.com/andrefillypesilva/datastructures-es6#readme"
 }
