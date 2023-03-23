@@ -1,10 +1,22 @@
+/**
+ * @author André Fillype Silva <andrefillype10@gmail.com>
+ * @description Implementation of the Linked List Data Structure.
+ */
 export class LinkedList {
+    /**
+     * Creates a new Linked List.
+     * @class
+     */
     constructor () {
         this.head = null;
         this.tail = null;
     }
 
-    // [time complexity]: O(1)
+    /**
+     * Inserts the provided element in the beginning of the linked list and this element becomes the head.
+     * @param {number|string} value 
+     * [time complexity]: O(1)
+     */
     prepend(value) {
         const node = new LinkedListNode(value);
         const oldHead = this.head;
@@ -15,7 +27,11 @@ export class LinkedList {
         if (!this.tail) this.tail = node;
     }
 
-    // [time complexity]: O(1)
+    /**
+     * Inserts the provided element in the end of the linked list and this element becomes the tail.
+     * @param {number|string} value 
+     * [time complexity]: O(1)
+     */
     append(value) {
         const node = new LinkedListNode(value);
         
@@ -28,7 +44,12 @@ export class LinkedList {
         this.tail = node;
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Finds the provided element in the linked list and returns the node if exists, otherwise returns null.
+     * @param {number|string} value 
+     * @returns {LinkedListNode|null}
+     * [time complexity]: O(n)
+     */
     lookup(value) {
         if (this.head) {
             let currentNode = this.head;
@@ -45,7 +66,13 @@ export class LinkedList {
         return null;
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Inserts the provided element in the provided position.
+     * @param {number} position 
+     * @param {number|string} value 
+     * @returns {LinkedListNode}
+     * [time complexity]: O(n)
+     */
     insert(position, value) {
         const node = new LinkedListNode(value);
 
@@ -86,7 +113,12 @@ export class LinkedList {
         }
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Removes an element from the provided position.
+     * @param {number} position 
+     * @returns {LinkedListNode}
+     * [time complexity]: O(n)
+     */
     delete(position) {
         if (this.head) {
             if (+position === 0) {
@@ -120,7 +152,11 @@ export class LinkedList {
         return this.head;
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Returns a string containing the entire linked list.
+     * @returns {string}
+     * [time complexity]: O(n)
+     */
     get() {
         let linkedList = '';
 
@@ -144,6 +180,10 @@ export class LinkedList {
 }
 
 export class LinkedListNode {
+    /**
+     * Creates a new Linked List Node.
+     * @class
+     */
     constructor (_value) {
         this.value = _value;
         this.next = null;
