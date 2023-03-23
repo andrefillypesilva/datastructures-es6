@@ -1,31 +1,58 @@
 import { Sorting } from "../../../../utils/sorting.utils.js";
 
+/**
+ * @author André Fillype Silva <andrefillype10@gmail.com>
+ * @description Implementation of the Array Data Structure.
+ */
 export class Array {
     #length;
     #data;
 
+    /**
+     * Creates a new Array.
+     * @class
+     */
     constructor() {
         this.#length = 0;
         this.#data = {};
     }
 
-    // [time complexity]: O(1)
+    /**
+     * Gets an array item for a provided index or gets the entire array in case of the index is not provided.
+     * @public
+     * @param {number} index 
+     * @returns {number|Object}
+     * [time complexity]: O(1)
+     */
     get(index) {
         return index >= 0 ? this.#data[index] : this.#data;
     }
 
-    // [time complexity]: O(1)
+    /**
+     * Pushes the provided value in the current array.
+     * @public
+     * @param {*} item 
+     * [time complexity]: O(1)
+     */
     push(item) {
         this.#data[this.#length] = item;
         this.#length++;
     }
 
-    // [time complexity]: O(1)
+    /**
+     * Returns the length of the current array.
+     * @returns {number}
+     * [time complexity]: O(1)
+     */
     length() {
         return this.#length;
     }
 
-    // [time complexity]: O(1)
+    /**
+     * Removes the last element from the current array and returns it.
+     * @returns {*}
+     * [time complexity]: O(1)
+     */
     pop() {
         const item = this.#data[this.#length-1];
 
@@ -35,12 +62,21 @@ export class Array {
         return item;
     }
 
-    // [time complexity]: O(1)
+    /**
+     * Updates the value for a new provided one in the provided index.
+     * @param {number} index 
+     * @param {*} item 
+     * [time complexity]: O(1)
+     */
     update(index, item) {
         this.#data[index] = item;
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Removes the first element from the current array and returns the resulting array.
+     * @returns {Object}
+     * [time complexity]: O(n)
+     */
     shift() {
         delete this.#data[0];
         this.#length--;
@@ -54,7 +90,12 @@ export class Array {
         return this.#data;
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Inserts the provided value in the beginning of the current array.
+     * @param {*} item 
+     * @returns {Object}
+     * [time complexity]: O(n)
+     */
     unshift(item) {
         for (let i = this.#length; i >= 0; i--) {
             this.#data[i] = this.#data[i - 1];
@@ -66,7 +107,12 @@ export class Array {
         return this.#data;
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Returns a finded index if the current array has the provided value, otherwise returns -1.
+     * @param {*} item 
+     * @returns {number}
+     * [time complexity]: O(n)
+     */
     find(item) {
         for (let i = 0; i < this.#length; i++) {
             if (this.#data[i].toString() === item.toString()) {
@@ -76,13 +122,21 @@ export class Array {
         return -1;
     }
 
-    // [time complexity]: O(n log n)
+    /**
+     * Returns the sorted array, using Quick Sort Algorithm.
+     * @returns {Object}
+     * [time complexity]: O(n log n)
+     */
     sort() {
         Sorting.prototype.quickSort(this.#data, 0, this.#length - 1);
         return this.#data;
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Returns the entire array in a string format.
+     * @returns {string}
+     * [time complexity]: O(n)
+     */
     toString() {
         let arrayString = '';
 
@@ -96,7 +150,12 @@ export class Array {
         return arrayString;
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Join all values of the current array into a string, separated by the provided term.
+     * @param {*} item 
+     * @returns {string}
+     * [time complexity]: O(n)
+     */
     join(item) {
         let arrayString = '';
 
@@ -110,7 +169,12 @@ export class Array {
         return arrayString;
     }
 
-    // [time complexity]: O(n + (a * b * ... * k))
+    /**
+     * Concats the current array with a provided term (it can be any value or other Array).
+     * @param {*} args 
+     * @returns {Object}
+     * [time complexity]: O(n + (a * b * ... * k))
+     */
     concat(...args) {
         // [warning]: The Javascript's concat() method does not change the existing arrays. It always returns a new array.
         const newArray = new Array();
@@ -135,7 +199,16 @@ export class Array {
         return newArray.#data;
     }
 
-    // [time complexity]: O(a * b)
+    /**
+     * Returns a new array with the provided value inserted in the provided index, shifting the remaining elements
+     * to right. However, if a n value has been provided by quantityToDelete param and it is greater than zero,
+     * it will delete the n elements after the provided index and replace the value instead of them.
+     * @param {number} startIndex 
+     * @param {number} quantityToDelete 
+     * @param  {*} items 
+     * @returns {Object}
+     * [time complexity]: O(a * b)
+     */
     splice(startIndex, quantityToDelete, ...items) {
         const array = new Array();
         const endIndex = +startIndex + +quantityToDelete;
@@ -158,7 +231,14 @@ export class Array {
         return array.#data;
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Returns a slice of the current array, based on the start/end indexes provided (if the end index has not been
+     * provided, it will consider the length of the current array).
+     * @param {number} startIndex 
+     * @param {number} endIndex 
+     * @returns {Object}
+     * [time complexity]: O(n)
+     */
     slice(startIndex, endIndex) {
         const array = new Array();
         const computedEndIndex = endIndex ?? this.#length;
