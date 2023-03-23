@@ -2,7 +2,7 @@ import { LinkedList, LinkedListNode } from '../linked-list/linked-list.component
 
 /**
  * @author André Fillype Silva <andrefillype10@gmail.com>
- * @description Implementation of the Queue Structure.
+ * @description Implementation of the Queue Data Structure.
  */
 export class Queue extends LinkedList {
     /**
