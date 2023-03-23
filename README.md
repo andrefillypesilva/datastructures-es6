@@ -9,7 +9,7 @@ npm i @datastructures-es6/core
 ```
 
 ## How to use this lib
-### After install the package on your personal project, you may import the code in your files:
+1. After install the package on your personal project, you may import the code in your files:
 ```javascript
 import {
     Array,
@@ -20,7 +20,7 @@ import {
 } from '@datastructures-es6/core/src/index.js';
 ```
 
-### Creating and using `data structures` (examples).
+2. Creating and using `data structures` (examples).
 #### Array [(code implementation)](https://github.com/andrefillypesilva/datastructures-es6/blob/main/src/modules/linear-data-structures/components/array/array.component.js)
 ```javascript
 const array = new Array();
@@ -100,9 +100,9 @@ console.log(binaryTree.breadthFirstSearch());
 - **get(index?: number)**: returns the element value for a provided index or returns the entire array in case you do not provide an index.
 - **push(value: any)**: pushes the provided value in the current array.
 - **length()**: returns the length of the current array.
-- **pop()**: removes the last element in the current array and returns it.
+- **pop()**: removes the last element from the current array and returns it.
 - **update(index: number, value: any)**: updates the value for a new provided one in the provided index.
-- **shift()**: removes the first element in the current array and returns the resulting array.
+- **shift()**: removes the first element from the current array and returns the resulting array.
 - **unshift(value: any)**: inserts the provided value in the beginning of the current array.
 - **find(value: any)**: if the current array has the provided value, it returns the finded index, else it returns -1.
 - **sort()**: returns the sorted array, using ```Quick sort``` algorithm.
