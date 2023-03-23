@@ -1,4 +1,12 @@
+/**
+ * @author André Fillype Silva <andrefillype10@gmail.com>
+ * @description Implementation of the Binary Tree Data Structure.
+ */
 export class BinaryTree {
+    /**
+     * Create a new Binary Tree.
+     * @class
+     */
     constructor () {
         this.root = null;
         this.current = null;
@@ -14,7 +22,13 @@ export class BinaryTree {
         this.foundElementDirection = null;
     }
 
-    // [time complexity]: O(log n)
+    /**
+     * Finds the provided element on the current binary tree.
+     * @public
+     * @param {number} value 
+     * @returns {BinaryTreeNode|null}
+     * [time complexity]: O(log n)
+     */
     lookup(value) {
         let current = this.root;
 
@@ -31,7 +45,12 @@ export class BinaryTree {
         return null;
     }
 
-    // [time complexity]: O(log n)
+    /**
+     * Inserts the provided value in the correct position on the current binary tree.
+     * @public
+     * @param {number} value 
+     * [time complexity]: O(log n)
+     */
     insert(value) {
         const node = new BinaryTreeNode(value);
 
@@ -82,19 +101,29 @@ export class BinaryTree {
         }
     }
 
-    // [time complexity]: O(log n)
+    /**
+     * Removes the provided value from the current binary tree.
+     * @public
+     * @param {number} value 
+     * [time complexity]: O(log n)
+     */
     delete(value) {
-        this.clearVariables();
+        this.#clearVariables();
         this.current = this.root;
 
-        this.searchForElementToDelete(value);
+        this.#searchForElementToDelete(value);
 
         if (this.foundElement) {
-            this.reorganizeBinaryTreeAfterFindElementToDelete();
+            this.#reorganizeBinaryTreeAfterFindElementToDelete();
         }
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Returns current binary tree after parsing through the Breadth First Search algorithm.
+     * @public
+     * @returns {Object}
+     * [time complexity]: O(n)
+     */
     breadthFirstSearch() {
         let currentNode = this.root;
         const list = [];
@@ -118,58 +147,86 @@ export class BinaryTree {
         return list;
     }
 
-    // [time complexity]: O(n)
+    /**
+     * Returns current binary tree after parsing through the Depth First Search algorithm using the approach
+     * provided by the type param (it can be inOrder, preOrder or postOrder).
+     * @public
+     * @param {string} type 
+     * @returns {Object}
+     * [time complexity]: O(n)
+     */
     depthFirstSearch(type) {
         switch (type) {
             case 'inOrder':
-                return this.traverseInOrder(this.root, []);
+                return this.#traverseInOrder(this.root, []);
             case 'preOrder':
-                return this.traversePreOrder(this.root, []);
+                return this.#traversePreOrder(this.root, []);
             case 'postOrder':
-                return this.traversePostOrder(this.root, []);
+                return this.#traversePostOrder(this.root, []);
             default:
-                return this.traverseInOrder(this.root, []);
+                return this.#traverseInOrder(this.root, []);
         }
     }
 
-    // [time complexity]: O(n)
-    traverseInOrder(node, list) {
+    /**
+     * Traverse binary tree in order.
+     * @private
+     * @param {BinaryTreeNode} node 
+     * @param {Object} list 
+     * @returns {Object}
+     * [time complexity]: O(n)
+     */
+    #traverseInOrder(node, list) {
         if (node.left) {
-            this.traverseInOrder(node.left, list);
+            this.#traverseInOrder(node.left, list);
         }
 
         list.push(node.key);
 
         if (node.right) {
-            this.traverseInOrder(node.right, list);
+            this.#traverseInOrder(node.right, list);
         }
 
         return list;
     }
 
-    // [time complexity]: O(n)
-    traversePreOrder(node, list) {
+    /**
+     * Traverse binary tree pre order.
+     * @private
+     * @param {BinaryTreeNode} node 
+     * @param {Object} list 
+     * @returns {Object}
+     * [time complexity]: O(n)
+     */
+    #traversePreOrder(node, list) {
         list.push(node.key);
 
         if (node.left) {
-            this.traversePreOrder(node.left, list);
+            this.#traversePreOrder(node.left, list);
         }
 
         if (node.right) {
-            this.traversePreOrder(node.right, list);
+            this.#traversePreOrder(node.right, list);
         }
 
         return list;
     }
 
-    // [time complexity]: O(n)
-    traversePostOrder(node, list) {
+    /**
+     * Traverse binary tree post order.
+     * @private
+     * @param {BinaryTreeNode} node 
+     * @param {Object} list 
+     * @returns {Object}
+     * [time complexity]: O(n)
+     */
+    #traversePostOrder(node, list) {
         if (node.left) {
-            this.traversePostOrder(node.left, list);
+            this.#traversePostOrder(node.left, list);
         }
 
         if (node.right) {
-            this.traversePostOrder(node.right, list);
+            this.#traversePostOrder(node.right, list);
         }
 
         list.push(node.key);
@@ -177,7 +234,11 @@ export class BinaryTree {
         return list;
     }
 
-    clearVariables() {
+    /**
+     * Resets variables to inital state.
+     * @private
+     */
+    #clearVariables() {
         this.current = null;
         this.foundElement = null;
         this.foundElementIsLeaf = false;
@@ -191,15 +252,19 @@ export class BinaryTree {
         this.foundElementDirection = null;
     }
 
-    searchForElementToDelete(value) {
+    /**
+     * Search for element to delete.
+     * @private
+     */
+    #searchForElementToDelete(value) {
         while (this.current) {
             if (!this.foundElement) {
                 if (+this.current.key === +value) {
-                    this.setFoundElement();
+                    this.#setFoundElement();
                 } else if (+this.current.key > +value) {
-                    this.goForward('left');
+                    this.#goForward('left');
                 } else {
-                    this.goForward('right');
+                    this.#goForward('right');
                 }
             } else {
                 if (this.current === this.rightElement) {
@@ -208,42 +273,50 @@ export class BinaryTree {
                         this.smallestGreaterThanLeftIsLeaf = !!(!this.current.right);
                         break;
                     }
-                    this.searchForTheSmallestGreaterThanLeft('left');
+                    this.#searchForTheSmallestGreaterThanLeft('left');
                 } else {
                     if (!this.current.right) {
                         this.smallestGreaterThanLeft = this.current;
                         this.smallestGreaterThanLeftIsLeaf = !!(!this.current.left);
                         break;
                     }
-                    this.searchForTheSmallestGreaterThanLeft('right');
+                    this.#searchForTheSmallestGreaterThanLeft('right');
                 }
             }
         }
     }
 
-    reorganizeBinaryTreeAfterFindElementToDelete() {
+    /**
+     * Reorganize binary tree after find element to delete.
+     * @private
+     */
+    #reorganizeBinaryTreeAfterFindElementToDelete() {
         if (
-            this.beforeFoundElementChildIsDifferentThanLastCurrentChild() ||
-            this.beforeFoundElementIsEqualToLastCurrent()
+            this.#beforeFoundElementChildIsDifferentThanLastCurrentChild() ||
+            this.#beforeFoundElementIsEqualToLastCurrent()
         ) this.lastCurrent[this.direction] = null;
 
-        if (this.smallestGreaterThanLeftIsDifferentOfItsChild())
+        if (this.#smallestGreaterThanLeftIsDifferentOfItsChild())
             this.smallestGreaterThanLeft[this.direction] = null;
 
         this.foundElement = null;
 
         if (!this.foundElementIsLeaf) {
-            if (this.smallestGreaterThanLeftIsDifferentThanLeftElement())
+            if (this.#smallestGreaterThanLeftIsDifferentThanLeftElement())
                 this.smallestGreaterThanLeft.left = this.leftElement;
             
-            if (this.smallestGreaterThanLeftIsDifferentThanRightElement())
+            if (this.#smallestGreaterThanLeftIsDifferentThanRightElement())
                 this.smallestGreaterThanLeft.right = this.rightElement;
 
             this.beforeFoundElement[this.foundElementDirection] = this.smallestGreaterThanLeft;
         }
     }
 
-    setFoundElement() {
+    /**
+     * Set information after find element.
+     * @private
+     */
+    #setFoundElement() {
         this.foundElement = this.current;
         this.leftElement = this.foundElement.left;
         this.rightElement = this.foundElement.right;
@@ -253,20 +326,33 @@ export class BinaryTree {
         this.foundElementIsLeaf = !this.foundElement.right && !this.foundElement.left;
     }
 
-    goForward(direction) {
+    /**
+     * Move forward to next level on the binary tree.
+     * @private
+     */
+    #goForward(direction) {
         this.lastCurrent = this.current;
         this.current = this.current[direction];
         this.direction = direction;
     }
 
-    searchForTheSmallestGreaterThanLeft(direction) {
+    /**
+     * Set information for smallest greater than left.
+     * @private
+     */
+    #searchForTheSmallestGreaterThanLeft(direction) {
         this.smallestGreaterThanLeft = this.current[direction];
         this.lastCurrent = this.current;
         this.direction = direction;
         this.current = this.current[direction];
     }
 
-    beforeFoundElementChildIsDifferentThanLastCurrentChild() {
+    /**
+     * Checks if the element before the found element is different than last current child.
+     * @private
+     * @returns {boolean}
+     */
+    #beforeFoundElementChildIsDifferentThanLastCurrentChild() {
         return (
             this.smallestGreaterThanLeftIsLeaf &&
             this.beforeFoundElement &&
@@ -277,7 +363,12 @@ export class BinaryTree {
         );
     }
 
-    beforeFoundElementIsEqualToLastCurrent() {
+    /**
+     * Checks if the element before the found element is equal to last current element.
+     * @private
+     * @returns {boolean}
+     */
+    #beforeFoundElementIsEqualToLastCurrent() {
         return (
             this.beforeFoundElement &&
             this.lastCurrent &&
@@ -285,7 +376,12 @@ export class BinaryTree {
         );
     }
 
-    smallestGreaterThanLeftIsDifferentOfItsChild() {
+    /**
+     * Checks if the smallest greater than left is different of its child.
+     * @private
+     * @returns {boolean}
+     */
+    #smallestGreaterThanLeftIsDifferentOfItsChild() {
         return (
             this.smallestGreaterThanLeft &&
             this.smallestGreaterThanLeft[this.direction] &&
@@ -293,7 +389,12 @@ export class BinaryTree {
         );
     }
 
-    smallestGreaterThanLeftIsDifferentThanLeftElement() {
+    /**
+     * Checks if the smallest greater than left is different than left element.
+     * @private
+     * @returns {boolean}
+     */
+    #smallestGreaterThanLeftIsDifferentThanLeftElement() {
         return (
             this.smallestGreaterThanLeft &&
             this.leftElement &&
@@ -301,7 +402,12 @@ export class BinaryTree {
         );
     }
 
-    smallestGreaterThanLeftIsDifferentThanRightElement() {
+    /**
+     * Checks if the smallest greater than left is different than right element.
+     * @private
+     * @returns {boolean}
+     */
+    #smallestGreaterThanLeftIsDifferentThanRightElement() {
         return (
             this.smallestGreaterThanLeft &&
             this.rightElement &&
@@ -311,6 +417,10 @@ export class BinaryTree {
 }
 
 export class BinaryTreeNode {
+    /**
+     * Creates a new Binary Tree Node.
+     * @class
+     */
     constructor(_key) {
         this.key = _key;
         this.left = this.right = null;
