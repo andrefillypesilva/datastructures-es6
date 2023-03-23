@@ -41,6 +41,7 @@ export class Array {
 
     /**
      * Returns the length of the current array.
+     * @public
      * @returns {number}
      * [time complexity]: O(1)
      */
@@ -50,6 +51,7 @@ export class Array {
 
     /**
      * Removes the last element from the current array and returns it.
+     * @public
      * @returns {*}
      * [time complexity]: O(1)
      */
@@ -64,6 +66,7 @@ export class Array {
 
     /**
      * Updates the value for a new provided one in the provided index.
+     * @public
      * @param {number} index 
      * @param {*} item 
      * [time complexity]: O(1)
@@ -74,6 +77,7 @@ export class Array {
 
     /**
      * Removes the first element from the current array and returns the resulting array.
+     * @public
      * @returns {Object}
      * [time complexity]: O(n)
      */
@@ -92,6 +96,7 @@ export class Array {
 
     /**
      * Inserts the provided value in the beginning of the current array.
+     * @public
      * @param {*} item 
      * @returns {Object}
      * [time complexity]: O(n)
@@ -109,6 +114,7 @@ export class Array {
 
     /**
      * Returns a finded index if the current array has the provided value, otherwise returns -1.
+     * @public
      * @param {*} item 
      * @returns {number}
      * [time complexity]: O(n)
@@ -124,6 +130,7 @@ export class Array {
 
     /**
      * Returns the sorted array, using Quick Sort Algorithm.
+     * @public
      * @returns {Object}
      * [time complexity]: O(n log n)
      */
@@ -134,6 +141,7 @@ export class Array {
 
     /**
      * Returns the entire array in a string format.
+     * @public
      * @returns {string}
      * [time complexity]: O(n)
      */
@@ -152,6 +160,7 @@ export class Array {
 
     /**
      * Join all values of the current array into a string, separated by the provided term.
+     * @public
      * @param {*} item 
      * @returns {string}
      * [time complexity]: O(n)
@@ -171,6 +180,7 @@ export class Array {
 
     /**
      * Concats the current array with a provided term (it can be any value or other Array).
+     * @public
      * @param {*} args 
      * @returns {Object}
      * [time complexity]: O(n + (a * b * ... * k))
@@ -203,6 +213,7 @@ export class Array {
      * Returns a new array with the provided value inserted in the provided index, shifting the remaining elements
      * to right. However, if a n value has been provided by quantityToDelete param and it is greater than zero,
      * it will delete the n elements after the provided index and replace the value instead of them.
+     * @public
      * @param {number} startIndex 
      * @param {number} quantityToDelete 
      * @param  {*} items 
@@ -234,6 +245,7 @@ export class Array {
     /**
      * Returns a slice of the current array, based on the start/end indexes provided (if the end index has not been
      * provided, it will consider the length of the current array).
+     * @public
      * @param {number} startIndex 
      * @param {number} endIndex 
      * @returns {Object}

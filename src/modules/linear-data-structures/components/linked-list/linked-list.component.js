@@ -14,6 +14,7 @@ export class LinkedList {
 
     /**
      * Inserts the provided element in the beginning of the linked list and this element becomes the head.
+     * @public
      * @param {number|string} value 
      * [time complexity]: O(1)
      */
@@ -29,6 +30,7 @@ export class LinkedList {
 
     /**
      * Inserts the provided element in the end of the linked list and this element becomes the tail.
+     * @public
      * @param {number|string} value 
      * [time complexity]: O(1)
      */
@@ -46,6 +48,7 @@ export class LinkedList {
 
     /**
      * Finds the provided element in the linked list and returns the node if exists, otherwise returns null.
+     * @public
      * @param {number|string} value 
      * @returns {LinkedListNode|null}
      * [time complexity]: O(n)
@@ -68,6 +71,7 @@ export class LinkedList {
 
     /**
      * Inserts the provided element in the provided position.
+     * @public
      * @param {number} position 
      * @param {number|string} value 
      * @returns {LinkedListNode}
@@ -115,6 +119,7 @@ export class LinkedList {
 
     /**
      * Removes an element from the provided position.
+     * @public
      * @param {number} position 
      * @returns {LinkedListNode}
      * [time complexity]: O(n)
@@ -154,6 +159,7 @@ export class LinkedList {
 
     /**
      * Returns a string containing the entire linked list.
+     * @public
      * @returns {string}
      * [time complexity]: O(n)
      */
