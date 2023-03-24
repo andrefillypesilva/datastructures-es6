@@ -1,4 +1,16 @@
+/**
+ * @author André Fillype Silva <andrefillype10@gmail.com>
+ * @description Implementation of sorting algorithms.
+ */
 export class Sorting {
+    /**
+     * Swaps the values for two elements in the provided array.
+     * @public
+     * @param {Array} array 
+     * @param {number} i 
+     * @param {number} j 
+     * @returns {Array}
+     */
     changeNumberOfPosition(array, i, j) {
         const temp = array[i];
         array[i] = array[j];
@@ -7,6 +19,13 @@ export class Sorting {
         return array;
     }
 
+    /**
+     * Sorts array values using Quick Sort algorithm.
+     * @public
+     * @param {Array} array 
+     * @param {number} left 
+     * @param {number} right 
+     */
     quickSort(array, left, right) {
         if (left < right) {
             const pivot = right;
